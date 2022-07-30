@@ -29,13 +29,13 @@ const Btn = styled.button`
   cursor: pointer;
 `;
 
-const Search = () => {
+const SearchInput = () => {
   const iconRef = useRef();
 
   return (
     <Form>
       <Input placeholder="What do you want to watch?" />
-      <Btn
+      {/* <Btn
         ref={iconRef}
         style={{
           position: 'absolute',
@@ -44,9 +44,9 @@ const Search = () => {
         }}
       >
         <FontAwesomeIcon icon={faMagnifyingGlass} />
-      </Btn>
+      </Btn> */}
     </Form>
   );
 };
 
-export default Search;
+export default SearchInput;

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useQuery } from 'react-query';
 import styled from 'styled-components';
 // import { datas, getMovie } from '../../api';
 
@@ -125,7 +124,7 @@ const MainSlider = ({ data }) => {
           key={index}
         >
           {data.slice(index * offset, index * offset + offset).map(movie => (
-            <Link key={movie.id || movie.title_kor} to={`/detail`}>
+            <Link key={movie.id} to={`/detail`}>
               <Box>
                 <BoxImg src={movie.poster_url} />
                 <MainTitle>{movie.title_kor}</MainTitle>

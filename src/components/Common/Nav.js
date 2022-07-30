@@ -1,12 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faClapperboard,
-  faTv,
-  faBars,
-} from '@fortawesome/free-solid-svg-icons';
+import { faClapperboard, faBars } from '@fortawesome/free-solid-svg-icons';
 
+import SearchInput from './SearchInput';
 import styled from 'styled-components';
-import Search from '../Main/Search';
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
@@ -70,7 +66,7 @@ const Nav = () => {
         </LogoBox>
       </Link>
 
-      <Search />
+      <SearchInput />
       <UserBox>
         <SignIn>Sign in</SignIn>
         <Menu>

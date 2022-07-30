@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCirclePlay,
@@ -8,7 +8,7 @@ import {
 import { mainMovies } from './movies';
 import MainController from './MainController';
 import { AnimatePresence } from 'framer-motion';
-import { createRef, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 const Wrapper = styled.div`
   width: 100%;
