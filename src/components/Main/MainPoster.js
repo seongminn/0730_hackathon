@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCirclePlay, faStar } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCirclePlay,
+  faStar,
+  faStarHalfStroke,
+} from '@fortawesome/free-solid-svg-icons';
 import { mainMovies } from './movies';
 import { useEffect, useState } from 'react';
 import MainController from './MainController';
@@ -83,8 +87,6 @@ const MainPoster = () => {
   const [page, setPage] = useState(0);
   const total = mainMovies.length - 1;
 
-  console.log(page);
-
   return (
     <>
       <Wrapper key={mainMovies[page].id}>
@@ -93,8 +95,16 @@ const MainPoster = () => {
           <DesBox>
             <Title>{mainMovies[page].title}</Title>
             <Ratings>
-              <FontAwesomeIcon icon={faStar} />
-              &nbsp;{mainMovies[page].vote_average}
+              {[
+                ...Array(
+                  Math.trunc(Math.round(mainMovies[page].vote_average) / 2)
+                ),
+              ].map((_, index) => (
+                <FontAwesomeIcon key={index} icon={faStar} />
+              ))}
+              {Math.trunc(Math.round(mainMovies[page].vote_average) % 2) ? (
+                <FontAwesomeIcon icon={faStarHalfStroke} />
+              ) : null}
             </Ratings>
             <Description>{mainMovies[page].overview}</Description>
             <Button>
