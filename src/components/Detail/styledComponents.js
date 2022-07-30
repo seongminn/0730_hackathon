@@ -5,13 +5,11 @@ export const DetailConDiv = styled.div`
   width: 100%;
   min-width: 512px;
   heigt: 100vh;
-  background: url()
   // opacity: 0.4;
   margin: 0 auto;
   display: flex;
   background-image: url(${back});
   background-size: cover;
-
 `;
 export const DetailMainDiv = styled.div`
   width: 100%;
@@ -115,4 +113,13 @@ export const DetailStaffBtn = styled.button`
   text-align: center;
   background: #be123c;
   border-radius: 6px;
+`;
+export const DetailStar = styled.div`
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+
+  path {
+    fill: #ffeaa7;
+  }
 `;

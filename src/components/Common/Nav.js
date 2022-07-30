@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import styled from 'styled-components';
-import Search from './Search';
+import Search from '../Main/Search';
 
 const Wrapper = styled.div`
   width: 100%;

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
-import { datas, getMovie } from '../../api';
+// import { datas, getMovie } from '../../api';
 
 const Slider = styled.div`
   position: relative;
@@ -85,6 +85,7 @@ const MainSlider = ({ data }) => {
   const [leaving, setLeaving] = useState(false);
 
   const toggleLeaving = () => setLeaving(prev => !prev);
+  console.log(data.movies);
 
   const increaseIndex = dir => {
     if (data) {
@@ -125,14 +126,15 @@ const MainSlider = ({ data }) => {
           transition={{ type: 'tween', duration: 0.5 }}
           key={index}
         >
-          {data.slice(index * offset, index * offset + offset).map(movie => (
-            <Link key={movie.id} to={`/movie/${movie.id}`}>
-              <Box>
-                <BoxImg src={movie.poster_url} />
-                <MainTitle>{movie.title_kor}</MainTitle>
-              </Box>
-            </Link>
-          ))}
+          {data &&
+            data.slice(index * offset, index * offset + offset).map(movie => (
+              <Link key={movie.id} to={`/movie/${movie.id}`}>
+                <Box>
+                  <BoxImg src={movie.poster_url} />
+                  <MainTitle>{movie.title_kor}</MainTitle>
+                </Box>
+              </Link>
+            ))}
         </Row>
         <Btn
           style={{ right: 20 }}

@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
+
 import {
   DetailConDiv,
   DetailImgDiv,
@@ -17,6 +20,7 @@ import {
   DetailTitleKorDiv,
   DetailStaffDiv,
   DetailStaffBtn,
+  DetailStar,
 } from './styledComponents';
 
 function Detail({ data }) {
@@ -61,6 +65,16 @@ function Detail({ data }) {
               <DetailSpeConDiv>
                 <DetailSpeTitleDiv>줄거리</DetailSpeTitleDiv>
                 <DetailSpeSumDiv>{data.summary}</DetailSpeSumDiv>
+                <DetailStar>
+                  {/* {[...Array(Math.trunc(Math.round(data.rating_aud) / 2))].map(
+                    (_, index) => (
+                      <FontAwesomeIcon key={index} icon={faStar} />
+                    )
+                  )}
+                  {Math.trunc(Math.round(data.rating_aud) % 2) ? (
+                    <FontAwesomeIcon icon={faStarHalfStroke} />
+                  ) : null} */}
+                </DetailStar>
               </DetailSpeConDiv>
             </DetailSpeBoxDiv>
           </DetailLeftDiv>
