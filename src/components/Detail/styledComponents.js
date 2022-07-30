@@ -77,7 +77,7 @@ export const SpeConDiv = styled.div`
   display: flex;
 `;
 export const SpeTitleDiv = styled.div`
-  width: 100px;
+  width: 90px;
   color: #b3b3b3;
   margin-right: 20px;
 `;
@@ -85,7 +85,7 @@ export const SpeContDiv = styled.div`
   color: white;
 `;
 export const SpeSumDiv = styled.div`
-  width: 500px;
+  width: 520px;
   text-align: justify;
   line-height: 1.5;
 `;
@@ -109,6 +109,7 @@ export const Poster = styled.img`
 `;
 export const StaffConDiv = styled.div`
   flex: 0.4;
+  padding: 50px 0;
   display: flex;
   flex-direction: column;
 `;

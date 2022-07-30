@@ -79,7 +79,9 @@ function Detail({ data }) {
                     {rating_sum > 0 && (
                       <Star>
                         {[
-                          ...Array(Math.trunc(Math.round(rating_sum / 3) / 2)),
+                          ...Array(
+                            Math.trunc(Math.round(rating_sum / 3) / 1.5)
+                          ),
                         ].map((_, index) => (
                           <FontAwesomeIcon key={index} icon={faStar} />
                         ))}
