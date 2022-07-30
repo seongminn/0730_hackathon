@@ -1,7 +1,5 @@
-const BASE_URL = 'https://306e41e0-d77a-4da7-93f5-af1d9df82fd8.mock.pstmn.io/';
-
 export const getMovie = async () => {
-  const res = await fetch(`${BASE_URL}movie/movielist`);
+  const res = await fetch(`http://127.0.0.1:8000/movie/`);
 
   return await res.json();
 };

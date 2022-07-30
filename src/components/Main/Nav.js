@@ -43,6 +43,7 @@ const SignIn = styled.p`
   font-weight: 500;
   font-size: 16px;
   color: #fff;
+  cursor: pointer;
 `;
 
 const Menu = styled.div`
@@ -53,6 +54,7 @@ const Menu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const Nav = () => {
