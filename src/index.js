@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { createGlobalStyle } from 'styled-components';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -93,9 +94,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <GlobalStyle />
+    <BrowserRouter>
       <App />
-    </QueryClientProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
