@@ -85,7 +85,7 @@ const MainSlider = ({ data }) => {
   const [leaving, setLeaving] = useState(false);
 
   const toggleLeaving = () => setLeaving(prev => !prev);
-  console.log(data.movies);
+  // console.log(data.movies);
 
   const increaseIndex = dir => {
     if (data) {

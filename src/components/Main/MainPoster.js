@@ -83,7 +83,7 @@ const MainPoster = () => {
   const [page, setPage] = useState(0);
   const total = mainMovies.length - 1;
 
-  console.log(page);
+  // console.log(page);
 
   return (
     <>

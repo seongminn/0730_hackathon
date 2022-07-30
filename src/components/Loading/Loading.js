@@ -12,7 +12,7 @@ function Loading() {
       }}
     >
       <ScaleLoader
-        color="#152f54"
+        color="#be123c"
         height={35}
         width={4}
         radius={2}

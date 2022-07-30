@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 import back from '../../assets/detailback.jpg';
+import '../../fonts/fonts.css';
 
-export const DetailConDiv = styled.div`
+export const ConDiv = styled.div`
   width: 100%;
   min-width: 512px;
   heigt: 100vh;
@@ -11,7 +12,7 @@ export const DetailConDiv = styled.div`
   background-image: url(${back});
   background-size: cover;
 `;
-export const DetailMainDiv = styled.div`
+export const MainDiv = styled.div`
   width: 100%;
   height: 100vh;
   // background: rgba(250, 250, 250, 0.3);
@@ -24,102 +25,109 @@ export const DetailMainDiv = styled.div`
     width: 100%;
   }
 `;
-export const DetailMainConDiv = styled.div`
+export const MainConDiv = styled.div`
   width: 80%;
   height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
-export const DetailLeftDiv = styled.div`
+export const LeftDiv = styled.div`
   width: 100%;
   height: 100%;
-  // background: red;
-  color: white;
   padding: 40px 0 40px 30px;
-  flex: 0.7;
+  flex: 0.6;
   display: flex;
   flex-direction: column;
 `;
-export const DetailRightDiv = styled.div`
+export const RightDiv = styled.div`
   width: 100%;
   height: 100%;
-  // background: blue;
-  color: white;
-  flex: 0.3;
+  flex: 0.4;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
 `;
-export const DetailTitleConDiv = styled.div`
+export const TitleConDiv = styled.div`
   margin-bottom: 30px;
   display: flex;
 `;
-export const DetailTitleKorDiv = styled.div`
+export const TitleKorDiv = styled.div`
+  font-family: 'BMHANNAPro', sans-serif;
   font-size: 2rem;
   font-weight: bold;
+  margin-right: 10px;
 `;
-export const DetailTitleEngDiv = styled.div`
-  color: white;
+export const TitleEngDiv = styled.div`
+  color: #b3b3b3;
 `;
-export const DetailSpeBoxDiv = styled.div`
-  margin-bottom: 30px;
+export const SpeBoxDiv = styled.div`
+  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
 `;
-export const DetailSpeConDiv = styled.div`
+export const RatBoxDiv = styled.div`
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+`;
+export const RatInboxDiv = styled.div`
+  flex: 0.5;
+`;
+export const SpeConDiv = styled.div`
   padding: 10px;
   display: flex;
 `;
-export const DetailSpeTitleDiv = styled.div`
+export const SpeTitleDiv = styled.div`
   width: 100px;
-  color: white;
+  color: #b3b3b3;
   margin-right: 20px;
 `;
-export const DetailSpeContDiv = styled.div`
-  color: yellow;
+export const SpeContDiv = styled.div`
+  color: white;
 `;
-export const DetailSpeSumDiv = styled.div`
-  width: 600px;
+export const SpeSumDiv = styled.div`
+  width: 500px;
   text-align: justify;
   line-height: 1.5;
 `;
-export const DetailImgDiv = styled.div`
-  width: 80%;
-  height: 70%;
-  background: white;
-  margin: 0 auto;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
-  display: flex;
-`;
-export const DetailPoster = styled.img`
-  width: 100%;
-  height: 100%;
-  src: ${props => props.src};
-`;
-export const DetailStaffDiv = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-`;
-export const DetailStaffBtn = styled.button`
-  width: 300px;
-  padding: 10px;
-  // background: white;
-  border: none;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  background: #be123c;
-  border-radius: 6px;
-`;
-export const DetailStar = styled.div`
-  font-size: 16px;
+export const Star = styled.div`
+  font-size: 1.8rem;
   display: flex;
   align-items: center;
-
   path {
     fill: #ffeaa7;
   }
+`;
+export const ImgDiv = styled.div`
+  flex: 0.6;
+  display: flex;
+  align-items: center;
+`;
+export const Poster = styled.img`
+  width: 100%;
+  height: 80%;
+  src: ${props => props.src};
+`;
+export const StaffConDiv = styled.div`
+  flex: 0.4;
+  display: flex;
+  flex-direction: column;
+`;
+export const StaffItemDiv = styled.div`
+  height: calc(100% / 3);
+  display: flex;
+  flex-direction: column;
+`;
+export const StaffItemImg = styled.div`
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  border-radius: 70%;
+  background-image: url(${props => props.url});
+  background-size: cover;
+`;
+export const StaffItemName = styled.div`
+  text-align: center;
+  font-size: 1rem;
+  color: #b3b3b3;
 `;
