@@ -1,12 +1,14 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './fonts/fonts.css';
 
-import DetailPage from './pages/DetailPage';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import Nav from './components/Main/Nav';
-import Footer from './components/Main/Footer';
 import HomePage from './pages/HomePage';
+
+import Nav from './components/Common/Nav';
+import DetailPage from './pages/DetailPage';
+import Footer from './components/Common/Footer';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -19,10 +21,12 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
-	body {
-		background-color: black;
-		color: #fff;
-	}
+  body {
+    background: black;
+    color: white;
+    font-family: "BMHANNAAir", sans-serif;
+		font-size: 1.2rem;
+  }
 `;
 
 function App() {

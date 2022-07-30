@@ -5,21 +5,20 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
-import { datas, getMovie } from '../../api';
+// import { datas, getMovie } from '../../api';
 
 const Slider = styled.div`
   position: relative;
   top: 90vh;
   width: 80%;
-  height: 100%;
-  margin: 100px auto;
+  height: 300px;
+  margin: 0 auto;
 `;
 
 const Row = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   position: absolute;
-  top: 50%;
   gap: 10px;
   width: 100%;
   height: 300px;
@@ -28,7 +27,7 @@ const Row = styled(motion.div)`
 
 const Btn = styled.button`
   position: absolute;
-  top: 50%;
+  bottom: 50%;
   font-size: 32px;
   background-color: transparent;
   color: white;
@@ -53,7 +52,7 @@ const BoxImg = styled.img`
 `;
 
 const MainTitle = styled.p`
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 600;
   color: white;
   padding-top: 10px;
@@ -110,7 +109,7 @@ const MainSlider = ({ data }) => {
         onExitComplete={toggleLeaving}
       >
         <Btn
-          style={{ left: 20 }}
+          style={{ left: 20, top: '50%' }}
           key="left"
           onClick={() => increaseIndex('prev')}
         >
@@ -126,7 +125,7 @@ const MainSlider = ({ data }) => {
           key={index}
         >
           {data.slice(index * offset, index * offset + offset).map(movie => (
-            <Link key={movie.id} to={`/movie/${movie.id}`}>
+            <Link key={movie.id || movie.title_kor} to={`/detail`}>
               <Box>
                 <BoxImg src={movie.poster_url} />
                 <MainTitle>{movie.title_kor}</MainTitle>

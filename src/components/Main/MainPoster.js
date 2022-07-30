@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCirclePlay,
@@ -6,9 +6,9 @@ import {
   faStarHalfStroke,
 } from '@fortawesome/free-solid-svg-icons';
 import { mainMovies } from './movies';
-import { useEffect, useState } from 'react';
 import MainController from './MainController';
 import { AnimatePresence } from 'framer-motion';
+import { createRef, useRef, useState } from 'react';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -37,7 +37,7 @@ const Content = styled.div`
 
 const DesBox = styled.div`
   position: absolute;
-  top: 50%;
+  top: calc(50% - ${props => props.height / 2}px);
   padding-left: 35px;
   width: 400px;
   display: flex;
@@ -45,16 +45,18 @@ const DesBox = styled.div`
   gap: 16px;
 `;
 
-const Ratings = styled.p``;
+const Ratings = styled.p`
+  color: #fcd34d;
+`;
 
 const Title = styled.h2`
-  font-size: 48px;
+  font-size: 64px;
   text-align: left;
   font-weight: bold;
 `;
 
 const Description = styled.p`
-  font-size: 18px;
+  font-size: 24px;
   text-align: left;
   font-weight: 400;
 
@@ -86,13 +88,14 @@ const Button = styled.button`
 const MainPoster = () => {
   const [page, setPage] = useState(0);
   const total = mainMovies.length - 1;
+  const DesBoxRef = useRef();
 
   return (
     <>
       <Wrapper key={mainMovies[page].id}>
         <Banner bgPhoto={mainMovies[page].backdrop_path} />
         <Content>
-          <DesBox>
+          <DesBox ref={DesBoxRef} height={DesBoxRef.current?.clientHeight}>
             <Title>{mainMovies[page].title}</Title>
             <Ratings>
               {[
@@ -107,7 +110,11 @@ const MainPoster = () => {
               ) : null}
             </Ratings>
             <Description>{mainMovies[page].overview}</Description>
-            <Button>
+            <Button
+              onClick={() =>
+                window.open(`${mainMovies[page].trailer}`, '_blank')
+              }
+            >
               <FontAwesomeIcon icon={faCirclePlay} />
               Watch Trailer
             </Button>

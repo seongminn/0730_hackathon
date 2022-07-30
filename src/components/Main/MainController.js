@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
 
 const Wrapper = styled.div`
   position: absolute;
-  top: 50%;
+  top: calc(50% - ${props => props.height / 2}px);
+
   right: 35px;
   display: flex;
   flex-direction: column;
@@ -16,6 +18,7 @@ const Button = styled(motion.button)`
   color: white;
   border: none;
   background-color: transparent;
+  font-size: 18px;
   font-weight: 700;
   position: relative;
   color: #9ca3af;
@@ -29,9 +32,9 @@ const Button = styled(motion.button)`
         &::before {
           content: '';
           height: 3px;
-          width: 20px;
+          width: 15px;
           top: 0.5em;
-          left: -20px;
+          left: -25px;
           position: absolute;
           background-color: white;
           color: white;
@@ -42,8 +45,10 @@ const Button = styled(motion.button)`
 `;
 
 const MainController = ({ total, page, setPage }) => {
+  const BtnBoxRef = useRef();
+
   return (
-    <Wrapper>
+    <Wrapper ref={BtnBoxRef} height={BtnBoxRef.current?.clientHeight}>
       {/* <Button onClick={() => setPage(page - 1)} disabled={page === 0}>
         &lt;
       </Button> */}

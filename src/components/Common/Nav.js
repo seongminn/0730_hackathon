@@ -6,7 +6,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import styled from 'styled-components';
-import Search from './Search';
+import Search from '../Main/Search';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 35px;
+  padding: 0 48px;
 `;
 
 const LogoBox = styled.div`
@@ -25,12 +26,14 @@ const LogoBox = styled.div`
   justify-content: center;
   align-items: center;
   color: #be123c;
+  font-size: 36px;
+
+  /* cursor: pointer; */
 `;
 
 const Title = styled.h2`
-  font-size: 24px;
   font-weight: bold;
-  padding-left: 12px;
+  padding-left: 18px;
 `;
 
 const UserBox = styled.div`
@@ -60,10 +63,13 @@ const Menu = styled.div`
 const Nav = () => {
   return (
     <Wrapper>
-      <LogoBox>
-        <FontAwesomeIcon icon={faClapperboard} style={{ fontSize: 24 }} />
-        <Title>Movie Box</Title>
-      </LogoBox>
+      <Link to="/">
+        <LogoBox>
+          <FontAwesomeIcon icon={faClapperboard} style={{ fontSize: 32 }} />
+          <Title>Movie Box</Title>
+        </LogoBox>
+      </Link>
+
       <Search />
       <UserBox>
         <SignIn>Sign in</SignIn>

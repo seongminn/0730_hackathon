@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Wrapper = styled.div`
-  position: absolute;
   bottom: 0;
   display: flex;
   flex-direction: column;

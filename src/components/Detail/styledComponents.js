@@ -114,3 +114,12 @@ export const DetailStaffBtn = styled.button`
   background: #be123c;
   border-radius: 6px;
 `;
+export const DetailStar = styled.div`
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+
+  path {
+    fill: #ffeaa7;
+  }
+`;
