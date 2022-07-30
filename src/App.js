@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './fonts/fonts.css';
 
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
 
-import Home from './pages/HomePage';
 import Nav from './components/Common/Nav';
 import DetailPage from './pages/DetailPage';
 import Footer from './components/Common/Footer';
@@ -35,7 +36,8 @@ function App() {
       <GlobalStyle />
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/detail" element={<DetailPage />} />
       </Routes>
       <Footer />

@@ -5,7 +5,7 @@ import '../../fonts/fonts.css';
 export const ConDiv = styled.div`
   width: 100%;
   min-width: 512px;
-  heigt: 100vh;
+  height: 100vh;
   // opacity: 0.4;
   margin: 0 auto;
   display: flex;
@@ -18,6 +18,7 @@ export const MainDiv = styled.div`
   // background: rgba(250, 250, 250, 0.3);
   background: rgba(0, 0, 0, 0.5);
   margin: 0 auto;
+  margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;

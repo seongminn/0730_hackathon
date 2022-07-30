@@ -1,3 +1,5 @@
+const BASE_TRAILER = 'https://www.youtube.com/watch?v=';
+
 export const mainMovies = [
   {
     backdrop_path:
@@ -15,22 +17,24 @@ export const mainMovies = [
     video: false,
     vote_average: 8.3,
     vote_count: 1739,
+    trailer: `${BASE_TRAILER}giXco2jaZ_4`,
   },
 
   {
     backdrop_path:
-      'https://image.tmdb.org/t/p/original/p1F51Lvj3sMopG948F5HsBbl43C.jpg',
+      'https://image.tmdb.org/t/p/original/3KL8UNKFWgIKXzLHjwY0uwgjzYl.jpg',
     genre_ids: [28, 12, 14],
     id: 616037,
     overview:
       '이너피스를 위해 자아 찾기 여정을 떠난 천둥의 신 토르. 그러나, 우주의 모든 신들을 몰살하려는 신 도살자 고르의 등장으로 토르의 안식년 계획은 산산조각 나버린다. 토르는새로운 위협에 맞서기 위해, 킹 발키리, 코르그, 그리고 전 여자친구 제인과 재회하게 되는데. 그녀가 묠니르를 휘두르는 마이티 토르가 되어 나타나 모두를 놀라게 한다. 이제, 팀 토르는 고르의 복수에 얽힌 미스터리를 밝히고 더 큰 전쟁을 막기 위한 전 우주적 스케일의 모험을 시작하는데...',
 
     poster_path:
-      'https://image.tmdb.org/t/p/original/bZLrpWM065h5bu1msUcPmLFsHBe.jpg',
+      'https://image.tmdb.org/t/p/original/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg',
     release_date: '2022-07-06',
     title: '토르: 러브 앤 썬더',
     vote_average: 6.7,
     vote_count: 1444,
+    trailer: `${BASE_TRAILER}Go8nTmfrQd8`,
   },
   {
     backdrop_path:
@@ -48,6 +52,7 @@ export const mainMovies = [
     video: false,
     vote_average: 7.1,
     vote_count: 2224,
+    trailer: `${BASE_TRAILER}UtxAPXT4174`,
   },
   {
     backdrop_path:
@@ -65,6 +70,7 @@ export const mainMovies = [
     video: false,
     vote_average: 7.5,
     vote_count: 531,
+    trailer: `${BASE_TRAILER}OCSnxXtjFL0`,
   },
   {
     backdrop_path:
@@ -83,5 +89,6 @@ export const mainMovies = [
     video: false,
     vote_average: 7.3,
     vote_count: 1091,
+    trailer: `${BASE_TRAILER}BwZs3H_UN3k`,
   },
 ];
