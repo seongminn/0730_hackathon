@@ -6,11 +6,11 @@ export const getMovie = async () => {
 
 // https://306e41e0-d77a-4da7-93f5-af1d9df82fd8.mock.pstmn.io/movie/movielist
 
-export const getDetail = async id => {
-  const res = await fetch(`${BASE_URL}/movie/${id}`);
+// export const getDetail = async id => {
+// const res = await fetch(`${BASE_URL}/movie/${id}`);
 
-  return await res.json();
-};
+// return await res.json();
+// };
 
 export const datas = () => {
   let data = [
