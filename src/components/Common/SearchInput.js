@@ -1,7 +1,11 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRef } from 'react';
+import axios from 'axios';
+import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
+import { searchState } from '../../atom';
 
 const Form = styled.form`
   position: relative;
@@ -16,6 +20,7 @@ const Input = styled.input`
   border: 1px solid #fff;
   outline: none;
   font-size: 18px;
+  color: #fff;
 
   &::placeholder {
     font-family: 'BMHANNAAir', sans-serif;
@@ -31,11 +36,30 @@ const Btn = styled.button`
 `;
 
 const SearchInput = () => {
-  const iconRef = useRef();
+  const [keyword, setKeyword] = useState('');
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useRecoilState(searchState);
+  const navigate = useNavigate();
+  // const iconRef = useRef();
+  const onChangeKeyword = e => {
+    setKeyword(e.target.value);
+  };
+
+  const onSearch = async e => {
+    e.preventDefault();
+    setSearch(keyword);
+    navigate('/search');
+    setKeyword('');
+  };
 
   return (
-    <Form>
-      <Input placeholder="What do you want to watch?" />
+    <Form onSubmit={onSearch}>
+      <Input
+        placeholder="What do you want to watch?"
+        value={keyword}
+        minLength="2"
+        onChange={onChangeKeyword}
+      />
       {/* <Btn
         ref={iconRef}
         style={{

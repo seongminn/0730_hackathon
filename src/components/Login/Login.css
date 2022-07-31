@@ -38,6 +38,7 @@ body {
   margin: 0 auto;
   text-align: center;
   background: rgb(253, 254, 254, 0.8);
+  /* background-color: #000; */
   border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
   display: flex;
   flex-direction: column;

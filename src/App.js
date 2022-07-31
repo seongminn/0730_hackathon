@@ -35,7 +35,9 @@ const GlobalStyle = createGlobalStyle`
 const RouterWrapper = styled.div``;
 
 function App() {
-  const [checked, setChecked] = useRecoilState(checkLoginState);
+  // const [checked, setChecked] = useRecoilState(checkLoginState);
+
+  const logedIn = window.sessionStorage.getItem('loginId');
 
   return (
     <>
@@ -43,11 +45,11 @@ function App() {
       <Nav />
       <RouterWrapper>
         <Routes>
-          {checked ? (
+          {logedIn !== '' ? (
             <>
+              <Route exact path="/search" element={<SearchPage />} />
+              <Route path="/movie/:id" element={<DetailPage />} />
               <Route path="/" element={<HomePage />} />
-              <Route path="/search" element={<SearchPage />} />
-              <Route path="/detail" element={<DetailPage />} />
             </>
           ) : (
             <>

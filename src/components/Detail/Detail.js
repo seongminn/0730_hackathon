@@ -106,7 +106,7 @@ function Detail({ data }) {
               <Poster src={data.poster_url} />
             </ImgDiv>
             <StaffConDiv>
-              {data &&
+              {data.staff &&
                 data.staff.slice(0, 3).map((el, index) => (
                   <StaffItemDiv key={index}>
                     <StaffItemImg url={el.image_url} />

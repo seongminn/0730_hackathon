@@ -134,7 +134,7 @@ const MainSlider = ({ data }) => {
           key={index}
         >
           {data.slice(index * offset, index * offset + offset).map(movie => (
-            <Link key={movie.id} to={`/detail`}>
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
               <Box variants={boxVars} initial="normal" whileHover="hover">
                 <BoxImg src={movie.poster_url} />
                 <MainTitle>{movie.title_kor}</MainTitle>

@@ -14,3 +14,8 @@ export const registerState = atom({
   key: 'register',
   default: { username: '', password: '' },
 });
+
+export const searchState = atom({
+  key: 'search',
+  default: [],
+});

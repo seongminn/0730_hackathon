@@ -51,6 +51,7 @@ const Login = () => {
               onChange={handleInputPw}
               onKeyPress={onKeyPress}
               minLength="8"
+              className="pw_input"
             />
           </div>
         </div>

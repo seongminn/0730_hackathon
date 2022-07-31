@@ -8,7 +8,7 @@ import Loading from '../components/Loading/Loading';
 
 function LoginPage() {
   const login = useRecoilValue(loginState);
-  const [checked, setChecked] = useRecoilState(checkLoginState);
+  // const [checked, setChecked] = useRecoilState(checkLoginState);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,8 @@ function LoginPage() {
           .then(res => {
             // console.log(res);
 
-            setChecked(true);
+            // setChecked(true);
+            window.localStorage.setItem('loginId', login.username);
             setLoading(false);
           });
       } catch (err) {
