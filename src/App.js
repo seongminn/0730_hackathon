@@ -8,14 +8,8 @@ import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import Nav from './components/Common/Nav';
 import DetailPage from './pages/DetailPage';
-<<<<<<< HEAD
-import Footer from './components/Common/Footer';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
-=======
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
->>>>>>> df61cbcbb2d2b5acdb7408975ea9f3589aed821b
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -47,8 +41,6 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/detail" element={<DetailPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
       </Routes>
     </>
   );
