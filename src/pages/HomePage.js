@@ -34,7 +34,6 @@ const Home = () => {
         const { data: result } = await axios.get(
           'http://127.0.0.1:8000/movie/'
         );
-        console.log(result);
         setData(result);
         setLoading(false);
       } catch (err) {

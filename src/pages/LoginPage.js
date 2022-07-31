@@ -4,28 +4,34 @@ import axios from 'axios';
 import Login from '../components/Login/Login';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { checkLoginState, loginState } from './../atom';
+import Loading from '../components/Loading/Loading';
 
 function LoginPage() {
   const login = useRecoilValue(loginState);
   const [checked, setChecked] = useRecoilState(checkLoginState);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function postLoginData() {
       try {
-        const data = await axios.post('url', login).then(res => {
-          console.log(res);
-          setChecked(!checked);
-          setLoading(false);
-        });
+        await axios
+          .post('http://127.0.0.1:8000/account/login', login)
+          .then(res => {
+            // console.log(res);
+            console.log(login);
+
+            setChecked(!checked);
+            setLoading(false);
+          });
       } catch (err) {
         console.log(err);
       }
     }
     setLoading(true);
     postLoginData();
-  }, []);
+  }, [login]);
 
-  return <>{loading ? <Loading /> : <Login />}</>;
+  return <Login />;
 }
 
 export default LoginPage;

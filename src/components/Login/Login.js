@@ -18,7 +18,7 @@ const Login = () => {
   };
 
   const onClickLogin = () => {
-    setLogin({ id: inputId, pw: inputPw });
+    setLogin({ username: inputId, password: inputPw });
   };
 
   return (
