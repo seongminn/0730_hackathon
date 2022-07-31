@@ -21,10 +21,7 @@ const Register = () => {
   return (
     <div className="container">
       <div className="login_box">
-        <Link to="/">
-          <p className="title">MovieBox</p>
-        </Link>
-        <p className="signup_title">Sign Up</p>
+        <p className="title">Register</p>
         <div className="login_type_area">
           <div className="id_box">
             <p htmlFor="input_id">Username</p>
@@ -54,7 +51,7 @@ const Register = () => {
         >
           Sign Up
         </button>
-        <Link to="/">
+        <Link to="/login">
           <p className="login_link">
             <span>이미 가입한 기존사용자는 </span>Log In
           </p>
