@@ -4,7 +4,8 @@ import { useRef } from 'react';
 
 const Wrapper = styled.div`
   position: absolute;
-  top: calc(50% - ${props => props.height / 2}px);
+  /* top: calc(50% - ${props => props.height / 2}px); */
+  top: 50%;
 
   right: 35px;
   display: flex;
@@ -22,6 +23,7 @@ const Button = styled(motion.button)`
   font-weight: 700;
   position: relative;
   color: #9ca3af;
+  cursor: pointer;
 
   ${props => {
     if (props.isactive === 'true') {
@@ -48,7 +50,10 @@ const MainController = ({ total, page, setPage }) => {
   const BtnBoxRef = useRef();
 
   return (
-    <Wrapper ref={BtnBoxRef} height={BtnBoxRef.current?.clientHeight}>
+    <Wrapper
+      ref={BtnBoxRef}
+      height={BtnBoxRef.current ? BtnBoxRef.current.clientHeight : 4}
+    >
       {/* <Button onClick={() => setPage(page - 1)} disabled={page === 0}>
         &lt;
       </Button> */}

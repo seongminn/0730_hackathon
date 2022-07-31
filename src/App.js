@@ -9,7 +9,6 @@ import SearchPage from './pages/SearchPage';
 
 import Nav from './components/Common/Nav';
 import DetailPage from './pages/DetailPage';
-import Footer from './components/Common/Footer';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -40,7 +39,6 @@ function App() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/detail" element={<DetailPage />} />
       </Routes>
-      <Footer />
     </>
   );
 }

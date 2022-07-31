@@ -37,7 +37,8 @@ const Content = styled.div`
 
 const DesBox = styled.div`
   position: absolute;
-  top: calc(50% - ${props => props.height / 2}px);
+  /* top: calc(50% - ${props => props.height / 2}px); */
+  top: 50%;
   padding-left: 35px;
   width: 400px;
   display: flex;
@@ -95,7 +96,10 @@ const MainPoster = () => {
       <Wrapper key={mainMovies[page].id}>
         <Banner bgPhoto={mainMovies[page].backdrop_path} />
         <Content>
-          <DesBox ref={DesBoxRef} height={DesBoxRef.current?.clientHeight}>
+          <DesBox
+            ref={DesBoxRef}
+            height={DesBoxRef.current ? DesBoxRef.current.clientHeight : 4}
+          >
             <Title>{mainMovies[page].title}</Title>
             <Ratings>
               {[
