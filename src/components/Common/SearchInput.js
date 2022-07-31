@@ -15,6 +15,7 @@ const Input = styled.input`
   background-color: transparent;
   border: 1px solid #fff;
   outline: none;
+  font-size: 18px;
 
   &::placeholder {
     font-family: 'BMHANNAAir', sans-serif;

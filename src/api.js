@@ -1,17 +1,3 @@
-export const getMovie = async () => {
-  const res = await fetch(`http://127.0.0.1:8000/movie/`);
-
-  return await res.json();
-};
-
-// https://306e41e0-d77a-4da7-93f5-af1d9df82fd8.mock.pstmn.io/movie/movielist
-
-// export const getDetail = async id => {
-// const res = await fetch(`${BASE_URL}/movie/${id}`);
-
-// return await res.json();
-// };
-
 export const datas = () => {
   let data = [
     {

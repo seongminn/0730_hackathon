@@ -11,6 +11,8 @@ import styled from 'styled-components';
 import MainSlider from '../components/Main/MainSlider';
 import MainPoster from '../components/Main/MainPoster';
 import Loading from '../components/Loading/Loading';
+import Footer from '../components/Main/Footer';
+import { datas } from '../api';
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,9 +21,8 @@ const Wrapper = styled.div`
 `;
 
 const Home = () => {
-  // const { data, isLoading } = useQuery(['movies'], getMovie);
-  // console.log(data);
   // const data = datas();
+  // const loading = false;
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,8 @@ const Home = () => {
         const { data: result } = await axios.get(
           'http://127.0.0.1:8000/movie/'
         );
-        setData(result.movies);
+        console.log(result);
+        setData(result);
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -43,6 +45,8 @@ const Home = () => {
     getAllData();
   }, []);
 
+  console.log(data);
+
   return (
     <>
       {loading ? (
@@ -51,10 +55,13 @@ const Home = () => {
           <Wrapper />
         </>
       ) : (
-        <Wrapper>
-          <MainPoster />
-          <MainSlider data={data} />
-        </Wrapper>
+        <>
+          <Wrapper>
+            <MainPoster />
+            <MainSlider data={data} />
+          </Wrapper>
+          <Footer />
+        </>
       )}
     </>
   );

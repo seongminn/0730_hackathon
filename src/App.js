@@ -9,7 +9,6 @@ import SearchPage from './pages/SearchPage';
 
 import Nav from './components/Common/Nav';
 import DetailPage from './pages/DetailPage';
-import Footer from './components/Common/Footer';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -26,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     background: black;
     color: white;
     font-family: "BMHANNAAir", sans-serif;
-		font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -40,7 +39,6 @@ function App() {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/detail" element={<DetailPage />} />
       </Routes>
-      <Footer />
     </>
   );
 }
