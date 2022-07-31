@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import back from '../../assets/detailback.jpg';
-import '../../fonts/fonts.css';
+import back from '../../assets/img/detailback.jpg';
+import '../../assets/fonts/fonts.css';
 
 export const ConDiv = styled.div`
   width: 100%;
