@@ -1,0 +1,38 @@
+
+
+.signup_title{
+    color: #552BF1;
+    font-size: 24px;
+}
+
+.register_btn{
+    width: 250px;
+    height: 43px;
+    background-color: #552BF1;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    transition: all 1.2s;
+}
+
+.register_btn:hover{
+    width: 250px;
+    height: 43px;
+    background-color: white;
+    color: #552BF1;
+    border-radius: 3px;
+}
+
+.login_link {
+    color: #7B66C8;
+    font-size: 12px;
+}
+
+.login_link:hover{
+    color: #7B66C8;
+    font-size: 12px;
+}
+
+.login_link span {
+    color: gray;
+}
