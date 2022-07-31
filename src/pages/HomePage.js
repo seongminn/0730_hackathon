@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import MainSlider from '../components/Main/MainSlider';
 import MainPoster from '../components/Main/MainPoster';
 import Loading from '../components/Loading/Loading';
+import Footer from '../components/Main/Footer';
 
 const Wrapper = styled.div`
   display: flex;
@@ -51,10 +52,13 @@ const Home = () => {
           <Wrapper />
         </>
       ) : (
-        <Wrapper>
-          <MainPoster />
-          <MainSlider data={data} />
-        </Wrapper>
+        <>
+          <Wrapper>
+            <MainPoster />
+            <MainSlider data={data} />
+          </Wrapper>
+          <Footer />
+        </>
       )}
     </>
   );

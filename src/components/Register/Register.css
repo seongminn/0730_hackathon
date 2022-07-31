@@ -1,20 +1,14 @@
-.container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+
 
 .signup_title{
-    color: #BE123C;
+    color: #552BF1;
     font-size: 24px;
-    margin-bottom: 25px;
 }
 
 .register_btn{
     width: 250px;
     height: 43px;
-    background-color: #BE123C;
+    background-color: #552BF1;
     color: white;
     border: none;
     border-radius: 3px;
@@ -25,18 +19,17 @@
     width: 250px;
     height: 43px;
     background-color: white;
-    color: #BE123C;
+    color: #552BF1;
     border-radius: 3px;
 }
 
 .login_link {
-    color: #BE123C;
+    color: #7B66C8;
     font-size: 12px;
 }
 
 .login_link:hover{
-    color: #BE123C;
-    font-weight: bold;
+    color: #7B66C8;
     font-size: 12px;
 }
 
