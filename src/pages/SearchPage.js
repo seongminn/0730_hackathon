@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { searchState } from '../atom';
-import Detail from '../components/Detail/Detail';
 import Loading from './../components/Loading/Loading';
 import Search from '../components/Search/Search';
 import styled from 'styled-components';
@@ -17,7 +15,7 @@ const Wrapper = styled.div`
 const SearchPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [search, setSearch] = useRecoilState(searchState);
+  const search = useRecoilValue(searchState);
 
   useEffect(() => {
     const getSearchData = async () => {

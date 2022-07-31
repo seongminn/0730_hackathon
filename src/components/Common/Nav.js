@@ -3,7 +3,7 @@ import { faClapperboard, faBars } from '@fortawesome/free-solid-svg-icons';
 
 import SearchInput from './SearchInput';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { checkLoginState } from '../../atom';
 
@@ -62,7 +62,11 @@ const Menu = styled.div`
 
 const Nav = () => {
   const [checked, setChecked] = useRecoilState(checkLoginState);
+  const navigate = useNavigate();
 
+  const onClickMenu = () => {
+    navigate('/allMovies');
+  };
   return (
     <Wrapper>
       <Link to="/">
@@ -80,6 +84,7 @@ const Nav = () => {
           <FontAwesomeIcon
             icon={faBars}
             style={{ fontSize: 16, color: 'white' }}
+            onClick={onClickMenu}
           />
         </Menu>
       </UserBox>

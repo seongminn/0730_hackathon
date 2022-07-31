@@ -32,7 +32,7 @@ function Detail({ data }) {
     parseFloat(data.rating_aud) +
     parseFloat(data.rating_cri) +
     parseFloat(data.rating_net);
-
+  console.log(data);
   return (
     <ConDiv>
       <MainDiv>

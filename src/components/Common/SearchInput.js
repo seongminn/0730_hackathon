@@ -59,6 +59,7 @@ const SearchInput = () => {
         value={keyword}
         minLength="2"
         onChange={onChangeKeyword}
+        required
       />
       {/* <Btn
         ref={iconRef}
