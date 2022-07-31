@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faSquareFacebook,
+  faFacebookSquare,
   faInstagram,
   faTwitter,
   faYoutube,
@@ -42,7 +42,7 @@ const Footer = () => {
   return (
     <Wrapper>
       <Socials>
-        <FontAwesomeIcon icon={faSquareFacebook} />
+        <FontAwesomeIcon icon={faFacebookSquare} />
         <FontAwesomeIcon icon={faInstagram} />
         <FontAwesomeIcon icon={faTwitter} />
         <FontAwesomeIcon icon={faYoutube} />

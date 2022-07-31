@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     background: black;
     color: white;
     font-family: "BMHANNAAir", sans-serif;
-		font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 `;
 
