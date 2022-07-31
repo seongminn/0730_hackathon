@@ -6,9 +6,10 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
-
 import Nav from './components/Common/Nav';
 import DetailPage from './pages/DetailPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -36,6 +37,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/detail" element={<DetailPage />} />
       </Routes>
