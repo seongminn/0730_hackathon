@@ -26,6 +26,7 @@ import {
   StaffItemImg,
   StaffItemName,
 } from './styledComponents';
+import Comment from './Comment';
 
 function Detail({ data }) {
   const rating_sum =
@@ -118,6 +119,7 @@ function Detail({ data }) {
             </StaffConDiv>
           </RightDiv>
         </MainConDiv>
+        <Comment data={data} />
       </MainDiv>
     </ConDiv>
   );
