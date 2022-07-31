@@ -40,11 +40,8 @@ const Home = () => {
         console.log(err);
       }
     }
-    setLoading(true);
     getAllData();
   }, []);
-
-  console.log(data);
 
   return (
     <>

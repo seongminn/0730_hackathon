@@ -21,6 +21,10 @@ const Login = () => {
     setLogin({ username: inputId, password: inputPw });
   };
 
+  const onKeyPress = e => {
+    e.key === 'Enter' && onClickLogin();
+  };
+
   return (
     <div className="container">
       <div className="login_box">
@@ -34,6 +38,7 @@ const Login = () => {
               placeholder="Enter Username"
               value={inputId}
               onChange={handleInputId}
+              minLength="4"
             />
           </div>
           <div className="pw_box">
@@ -44,6 +49,8 @@ const Login = () => {
               placeholder="Enter Password"
               value={inputPw}
               onChange={handleInputPw}
+              onKeyPress={onKeyPress}
+              minLength="8"
             />
           </div>
         </div>

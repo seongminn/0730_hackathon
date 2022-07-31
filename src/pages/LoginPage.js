@@ -18,9 +18,8 @@ function LoginPage() {
           .post('http://127.0.0.1:8000/account/login', login)
           .then(res => {
             // console.log(res);
-            console.log(login);
 
-            setChecked(!checked);
+            setChecked(true);
             setLoading(false);
           });
       } catch (err) {
@@ -28,7 +27,7 @@ function LoginPage() {
       }
     }
     setLoading(true);
-    postLoginData();
+    if (login.username !== '') postLoginData();
   }, [login]);
 
   return <Login />;

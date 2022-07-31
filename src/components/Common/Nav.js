@@ -4,6 +4,8 @@ import { faClapperboard, faBars } from '@fortawesome/free-solid-svg-icons';
 import SearchInput from './SearchInput';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { checkLoginState } from '../../atom';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -59,6 +61,8 @@ const Menu = styled.div`
 `;
 
 const Nav = () => {
+  const [checked, setChecked] = useRecoilState(checkLoginState);
+
   return (
     <Wrapper>
       <Link to="/">
@@ -70,7 +74,8 @@ const Nav = () => {
 
       <SearchInput />
       <UserBox>
-        <SignIn>Sign in</SignIn>
+        {checked && <SignIn onClick={() => setChecked(false)}>Sign out</SignIn>}
+        {/* <SignIn>{checked ? 'Sign out' : 'Sign in'}</SignIn> */}
         <Menu>
           <FontAwesomeIcon
             icon={faBars}
