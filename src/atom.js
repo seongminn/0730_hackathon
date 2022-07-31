@@ -7,7 +7,7 @@ export const loginState = atom({
 
 export const checkLoginState = atom({
   key: 'checklogin',
-  default: false,
+  default: { checked: false, username: '' },
 });
 
 export const registerState = atom({

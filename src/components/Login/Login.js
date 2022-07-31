@@ -19,6 +19,7 @@ const Login = () => {
 
   const onClickLogin = () => {
     setLogin({ username: inputId, password: inputPw });
+    console.log(login);
   };
 
   const onKeyPress = e => {

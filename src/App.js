@@ -10,8 +10,8 @@ import Nav from './components/Common/Nav';
 import DetailPage from './pages/DetailPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import { useRecoilState } from 'recoil';
-import { checkLoginState } from './atom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { checkLoginState, loginState } from './atom';
 import AllMoviePage from './pages/AllMoviePage';
 
 const GlobalStyle = createGlobalStyle`
@@ -36,9 +36,11 @@ const GlobalStyle = createGlobalStyle`
 const RouterWrapper = styled.div``;
 
 function App() {
-  // const [checked, setChecked] = useRecoilState(checkLoginState);
-
-  const logedIn = window.sessionStorage.getItem('loginId');
+  const login = useRecoilValue(loginState);
+  const checked = useRecoilValue(checkLoginState);
+  console.log(checked);
+  // const logedIn = window.sessionStorage.getItem('loginId');
+  // window.sessionStorage.clear();
 
   return (
     <>
@@ -46,7 +48,7 @@ function App() {
       <Nav />
       <RouterWrapper>
         <Routes>
-          {logedIn !== '' ? (
+          {checked.checked ? (
             <>
               <Route exact path="/search" element={<SearchPage />} />
               <Route path="/movie/:id" element={<DetailPage />} />

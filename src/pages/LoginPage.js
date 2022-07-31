@@ -8,7 +8,7 @@ import Loading from '../components/Loading/Loading';
 
 function LoginPage() {
   const login = useRecoilValue(loginState);
-  // const [checked, setChecked] = useRecoilState(checkLoginState);
+  const [checked, setChecked] = useRecoilState(checkLoginState);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -17,9 +17,10 @@ function LoginPage() {
         await axios
           .post('http://127.0.0.1:8000/account/login', login)
           .then(res => {
-            // console.log(res);
+            console.log(res);
 
-            // setChecked(true);
+            setChecked({ checked: true, username: login.username });
+            console.log(res.data);
             window.localStorage.setItem('loginId', login.username);
             setLoading(false);
           });
