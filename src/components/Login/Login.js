@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { loginState } from '../../atom';
 import './Login.css';
 
 const Login = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
+  const [login, setLogin] = useRecoilState(loginState);
 
   const handleInputId = e => {
     setInputId(e.target.value);
@@ -15,17 +18,16 @@ const Login = () => {
   };
 
   const onClickLogin = () => {
-    console.log('login trial');
+    setLogin({ id: inputId, pw: inputPw });
   };
 
   return (
     <div className="container">
       <div className="login_box">
-        <p className="title">MovieBox</p>
-        <p className="login_title">Log In</p>
+        <p className="title">Log In</p>
         <div className="login_type_area">
           <div className="id_box">
-            y
+            <p htmlFor="input_pw">Username</p>
             <input
               type="text"
               name="input_id"
