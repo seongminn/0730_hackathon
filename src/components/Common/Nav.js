@@ -30,6 +30,8 @@ const LogoBox = styled.div`
 const Title = styled.h2`
   font-weight: bold;
   padding-left: 18px;
+
+  font-family: 'BMHANNApro', sans-serif;
 `;
 
 const UserBox = styled.div`

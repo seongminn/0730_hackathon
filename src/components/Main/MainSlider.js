@@ -75,6 +75,16 @@ const rowVars = {
   }),
 };
 
+const boxVars = {
+  normal: {
+    scale: 1,
+  },
+  hover: {
+    transition: { delay: 0, duration: 0.3, type: 'tween' },
+    y: -10,
+  },
+};
+
 const offset = 6;
 
 const MainSlider = ({ data }) => {
@@ -125,7 +135,7 @@ const MainSlider = ({ data }) => {
         >
           {data.slice(index * offset, index * offset + offset).map(movie => (
             <Link key={movie.id} to={`/detail`}>
-              <Box>
+              <Box variants={boxVars} initial="normal" whileHover="hover">
                 <BoxImg src={movie.poster_url} />
                 <MainTitle>{movie.title_kor}</MainTitle>
               </Box>
@@ -133,7 +143,7 @@ const MainSlider = ({ data }) => {
           ))}
         </Row>
         <Btn
-          style={{ right: 20 }}
+          style={{ right: 20, top: '50%' }}
           key="right"
           onClick={() => increaseIndex('next')}
         >
