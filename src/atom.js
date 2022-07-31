@@ -12,5 +12,5 @@ export const checkLoginState = atom({
 
 export const registerState = atom({
   key: 'register',
-  default: { id: '', pw: '' },
+  default: { username: '', password: '' },
 });

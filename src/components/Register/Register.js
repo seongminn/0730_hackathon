@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
+import { useRecoilState } from 'recoil';
+import { registerState } from '../../atom';
 
 const Register = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
+  const [register, setRegister] = useRecoilState(registerState);
 
   const handleInputId = e => {
     setInputId(e.target.value);
@@ -15,7 +18,7 @@ const Register = () => {
   };
 
   const onClickRegister = () => {
-    console.log('Register trial');
+    setRegister({ username: inputId, password: inputPw });
   };
 
   return (
