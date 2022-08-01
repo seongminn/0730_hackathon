@@ -25,8 +25,8 @@ import {
   StaffItemDiv,
   StaffItemImg,
   StaffItemName,
-} from './styledComponents';
-import Comment from './Comment';
+} from './styled';
+import Comment from '../comment';
 
 function Detail({ data }) {
   const rating_sum =

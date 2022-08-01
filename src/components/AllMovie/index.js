@@ -1,29 +1,78 @@
-import { Btn } from './styled';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Loading from '../loading';
+import Pagination from './pagination';
+import { Wrapper, Rows, Box, BoxImg, Info, Page } from './styled';
 
-const Pagination = ({ total, limit, page, setPage }) => {
-  const numPages = Math.ceil(total / limit);
+const boxVars = {
+  normal: {
+    scale: 1,
+  },
+  hover: {
+    transition: { delay: 0, duration: 0.3, type: 'tween' },
+    y: -10,
+  },
+};
+
+const offset = 6;
+
+const AllMoviePage = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    async function getAllData() {
+      setLoading(true);
+      try {
+        const { data: result } = await axios.get(
+          'http://127.0.0.1:8000/movie/'
+        );
+        setData(result);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getAllData();
+  }, []);
 
   return (
-    <>
-      <Btn onClick={() => setPage(page - 1)} disabled={page === 0}>
-        &lt;
-      </Btn>
-      {Array(numPages)
-        .fill()
-        .map((_, i) => (
-          <Btn
-            key={i}
-            onClick={() => setPage(i)}
-            style={{ color: i === page && '#be123c' }}
-          >
-            {i + 1}
-          </Btn>
-        ))}
-      <Btn onClick={() => setPage(page + 1)} disabled={page === numPages - 1}>
-        &gt;
-      </Btn>
-    </>
+    <Wrapper>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Rows rows={data.length}>
+            {data.slice(offset * page, offset * page + offset).map(movie => (
+              <Link to={`/movie/${movie.id}`} key={movie.id}>
+                <Box
+                  key={movie.id}
+                  variants={boxVars}
+                  initial="normal"
+                  whileHover="hover"
+                >
+                  <BoxImg src={movie.poster_url} />
+                  <Info>
+                    <h4>{movie.title_kor}</h4>
+                  </Info>
+                </Box>
+              </Link>
+            ))}
+          </Rows>
+          <Page>
+            <Pagination
+              total={data.length}
+              limit={6}
+              page={page}
+              setPage={setPage}
+            />
+          </Page>
+        </>
+      )}
+    </Wrapper>
   );
 };
 
-export default Pagination;
+export default AllMoviePage;

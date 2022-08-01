@@ -8,11 +8,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 // import { datas, getMovie } from '../api';
-import MainSlider from '../components/Main/MainSlider';
-import MainPoster from '../components/Main/MainPoster';
-import Loading from '../components/Loading/Loading';
-import Footer from '../components/Main/Footer';
-import { datas } from '../api';
+import MainSlider from './slider';
+import MainPoster from './poster';
+import Loading from '../loading';
+import Footer from './footer';
 
 const Wrapper = styled.div`
   display: flex;

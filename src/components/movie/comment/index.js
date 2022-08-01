@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { commentState, tokenState } from '../../atom';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import {
   CommentBoxDiv,
   CommentConDiv,
@@ -8,18 +7,21 @@ import {
   CommentInputDiv,
   CommentSubBtn,
   CommentTitleDiv,
-} from './styledComponents';
+} from './styled';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { loginState } from './../../atom';
+import { loginState } from './../../../atom';
 
 function Comment({ data }) {
   const { id } = useParams();
   const [input, setInput] = useState();
   const [commentlist, setCommentList] = useState(data.comments);
   const login = useRecoilValue(loginState);
-  // const token = useRecoilValue(tokenState);
-  // const [inputComment, setInputComment] = useRecoilState(commentState);
+
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: login.token,
+  };
 
   const handleInput = e => {
     setInput(e.target.value);
@@ -49,10 +51,14 @@ function Comment({ data }) {
   const postComment = () => {
     console.log(login);
     try {
-      axios.post(`http://127.0.0.1:8000/movie/comment/`, {
-        comment: input,
-        movies: id,
-      });
+      axios.post(
+        `http://127.0.0.1:8000/movie/comment/`,
+        {
+          comment: input,
+          movies: id,
+        },
+        { headers: headers }
+      );
     } catch (err) {
       console.log(err);
     }

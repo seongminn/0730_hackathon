@@ -4,8 +4,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -27,6 +26,7 @@ export const Box = styled(motion.div)`
 `;
 
 export const BoxImg = styled.img`
+  position: relative;
   width: 100%;
   height: 300px;
   border-radius: 5px;
@@ -36,6 +36,7 @@ export const Info = styled(motion.div)`
   padding: 10px 0 10px 10px;
   background-color: transparent;
   opacity: 1;
+  width: 100%;
 
   h4 {
     color: #ffffffde;
@@ -52,5 +53,3 @@ export const Info = styled(motion.div)`
     transition: color 0.1s;
   }
 `;
-
-export const Page = styled.div``;

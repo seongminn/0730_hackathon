@@ -5,12 +5,22 @@ import { Wrapper, LogoBox, Title, UserBox, SignIn, Menu } from './styled';
 
 import SearchInput from '../searchInput';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { loginState } from '../../../atom';
 
 const Nav = () => {
   const navigate = useNavigate();
+  const setLogin = useSetRecoilState(loginState);
 
   const onClickMenu = () => {
     navigate('/allMovies');
+  };
+
+  const onClickLogout = () => {
+    window.localStorage.removeItem('loginId');
+    setLogin({});
+
+    window.location.reload();
   };
   return (
     <Wrapper>
@@ -23,7 +33,7 @@ const Nav = () => {
 
       <SearchInput />
       <UserBox>
-        <SignIn onClick={() => window.location.reload()}>Sign out</SignIn>
+        <SignIn onClick={() => onClickLogout()}>Sign out</SignIn>
         {/* <SignIn>{checked ? 'Sign out' : 'Sign in'}</SignIn> */}
         <Menu>
           <Link to="/allMovies">

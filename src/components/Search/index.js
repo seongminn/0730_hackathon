@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
-import { searchState } from '../atom';
-import Loading from './../components/Loading/Loading';
-import Search from '../components/Search/Search';
+import { searchState } from '../../atom';
+import Loading from '../loading';
+import Search from './result/Search';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`

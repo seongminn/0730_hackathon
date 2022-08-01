@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './assets/fonts/fonts.css';
 
 import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import HomePage from './pages/HomePage';
-import SearchPage from './pages/SearchPage';
+import HomePage from './components/Main';
+import SearchPage from './components/Search';
 import Nav from './components/Common/nav';
-import DetailPage from './pages/DetailPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { checkLoginState, loginState } from './atom';
-import AllMoviePage from './pages/AllMoviePage';
+import DetailPage from './components/movie';
+import Login from './components/auth/login';
+import RegisterPage from './components/auth/register';
+import { useRecoilValue } from 'recoil';
+import { loginState } from './atom';
+import AllMoviePage from './components/AllMovie';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -36,10 +36,9 @@ const GlobalStyle = createGlobalStyle`
 const RouterWrapper = styled.div``;
 
 function App() {
-  const login = useRecoilValue(loginState);
-  const checked = useRecoilValue(checkLoginState);
+  // const login = useRecoilValue(loginState)
 
-  // const logedIn = window.sessionStorage.getItem('loginId');
+  const loggedIn = window.sessionStorage.getItem('loginId');
   // window.sessionStorage.clear();
 
   return (
@@ -48,17 +47,16 @@ function App() {
       <Nav />
       <RouterWrapper>
         <Routes>
-          {login ? (
+          {loggedIn ? (
             <>
               <Route exact path="/search" element={<SearchPage />} />
               <Route path="/movie/:id" element={<DetailPage />} />
               <Route path="/allMovies" element={<AllMoviePage />} />
-
               <Route path="/" element={<HomePage />} />
             </>
           ) : (
             <>
-              <Route path="/" element={<LoginPage />} />
+              <Route path="/" element={<Login />} />
               <Route path="/register" element={<RegisterPage />} />
             </>
           )}

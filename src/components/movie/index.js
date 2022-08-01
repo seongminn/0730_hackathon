@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import Detail from '../components/Detail/Detail';
-import Loading from '../components/Loading/Loading';
-import { rawdata } from './rawdata';
+import Detail from './detail';
+import Loading from '../../components/loading';
 import { useParams } from 'react-router-dom';
 
 function DetailPage() {

@@ -1,67 +1,11 @@
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+
+import { Slider, Row, Btn, Box, BoxImg, MainTitle } from './styled';
 // import { datas, getMovie } from '../../api';
-
-const Slider = styled.div`
-  position: relative;
-  top: 90vh;
-  width: 80%;
-  height: 300px;
-  margin: 0 auto;
-`;
-
-const Row = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  position: absolute;
-  gap: 10px;
-  width: 100%;
-  height: 300px;
-  padding: 0 60px;
-`;
-
-const Btn = styled.button`
-  position: absolute;
-  bottom: 50%;
-  font-size: 32px;
-  background-color: transparent;
-  color: white;
-  border-color: transparent;
-  z-index: 50;
-
-  cursor: pointer;
-`;
-
-const Box = styled(motion.div)`
-  width: 100%;
-  height: 300px;
-  font-size: 66px;
-  cursor: pointer;
-`;
-
-const BoxImg = styled.img`
-  position: relative;
-  width: 100%;
-  height: 300px;
-  border-radius: 5px;
-`;
-
-const MainTitle = styled.p`
-  font-size: 22px;
-  font-weight: 600;
-  color: white;
-  padding-top: 10px;
-  text-align: right;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
 
 const rowVars = {
   hidden: back => ({
