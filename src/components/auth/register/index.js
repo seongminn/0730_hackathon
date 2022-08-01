@@ -8,6 +8,8 @@ import axios from 'axios';
 const Register = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
+  const [inputNickname, setInputNickname] = useState('');
+  const [inputLocation, setInputLocation] = useState('');
   const [register, setRegister] = useRecoilState(registerState);
 
   const handleInputId = e => {
@@ -18,25 +20,26 @@ const Register = () => {
     setInputPw(event.target.value);
   };
 
-  const onClickRegister = () => {
-    setRegister({ username: inputId, password: inputPw });
+  const handleInputNickname = event => {
+    setInputNickname(event.target.value);
   };
 
-  useEffect(() => {
-    async function postLoginData() {
-      try {
-        await axios
-          .post('http://127.0.0.1:8000/account/signup', register)
-          .then(res => {
-            // console.log(res);
-          });
-      } catch (err) {
-        console.log(err);
-      }
-    }
+  const handleInputLocation = event => {
+    setInputLocation(event.target.value);
+  };
 
-    postLoginData();
-  }, []);
+  async function postLoginData() {
+    try {
+      await axios.post('http://127.0.0.1:8000/account/signup', {
+        username: inputId,
+        password: inputPw,
+        nickname: inputNickname,
+        location: inputLocation,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="container">
@@ -63,12 +66,28 @@ const Register = () => {
               onChange={handleInputPw}
             />
           </div>
+          <div className="pw_box">
+            <p htmlFor="input_pw">Nickname</p>
+            <input
+              type="text"
+              name="input_nickname"
+              placeholder="사용할 Nickname를 입력해주세요"
+              value={inputNickname}
+              onChange={handleInputNickname}
+            />
+          </div>
+          <div className="pw_box">
+            <p htmlFor="input_pw">Location</p>
+            <input
+              type="text"
+              name="input_location"
+              placeholder="사용할 Location를 입력해주세요"
+              value={inputLocation}
+              onChange={handleInputLocation}
+            />
+          </div>
         </div>
-        <button
-          className="register_btn"
-          onClick={onClickRegister}
-          type="button"
-        >
+        <button className="register_btn" onClick={postLoginData} type="button">
           Sign Up
         </button>
         <Link to="/">

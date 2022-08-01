@@ -39,8 +39,9 @@ const Login = () => {
         )
         .then(res => {
           console.log(res.data);
+          window.localStorage.setItem('loginId', res.data.token);
+
           setLogin(res.data);
-          window.localStorage.setItem('loingId', res.data.token);
         });
     } catch (err) {
       console.log(err);
