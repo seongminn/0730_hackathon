@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
 import { useRecoilState } from 'recoil';
-import { registerState } from '../../atom';
+import { registerState } from '../../../atom';
+import axios from 'axios';
 
 const Register = () => {
   const [inputId, setInputId] = useState('');
@@ -20,6 +21,22 @@ const Register = () => {
   const onClickRegister = () => {
     setRegister({ username: inputId, password: inputPw });
   };
+
+  useEffect(() => {
+    async function postLoginData() {
+      try {
+        await axios
+          .post('http://127.0.0.1:8000/account/signup', register)
+          .then(res => {
+            // console.log(res);
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    postLoginData();
+  }, []);
 
   return (
     <div className="container">

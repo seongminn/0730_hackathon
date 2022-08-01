@@ -1,14 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { loginState } from '../../atom';
+import { loginState } from '../../../atom';
 import './Login.css';
 
 const Login = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const [login, setLogin] = useRecoilState(loginState);
 
@@ -21,7 +20,6 @@ const Login = () => {
   };
 
   const onClickLogin = () => {
-    setLogin({ username: inputId, password: inputPw });
     postLoginData();
   };
 
@@ -30,8 +28,6 @@ const Login = () => {
   };
 
   async function postLoginData() {
-    setLoading(true);
-
     try {
       await axios
         .post(
@@ -42,9 +38,9 @@ const Login = () => {
           }
         )
         .then(res => {
+          console.log(res.data);
           setLogin(res.data);
-
-          setLoading(false);
+          window.localStorage.setItem('loingId', res.data.token);
         });
     } catch (err) {
       console.log(err);

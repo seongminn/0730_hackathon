@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookSquare,
@@ -7,38 +6,7 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
-
-const Wrapper = styled.div`
-  margin-bottom: 50px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 36px;
-  align-items: center;
-  z-index: 999;
-`;
-
-const Socials = styled.div`
-  width: auto;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  font-size: 24px;
-  cursor: pointer;
-`;
-
-const Links = styled.div`
-  width: auto;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-`;
-
-const Copy = styled.p`
-  color: #6b7280;
-  font-size: 18px;
-`;
+import { Wrapper, Socials, Links, Copy } from './styled';
 
 const Footer = () => {
   return (
