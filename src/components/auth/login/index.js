@@ -1,15 +1,24 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import {
+  Wrapper,
+  Title,
+  Form,
+  InputName,
+  Input,
+  Button,
+  SocialBox,
+} from './styled';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { loginState } from '../../../atom';
+import { tokenState } from '../../../atom';
 import './Login.css';
 
 const Login = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
 
-  const [login, setLogin] = useRecoilState(loginState);
+  const [token, setToken] = useRecoilState(tokenState);
 
   const handleInputId = e => {
     setInputId(e.target.value);
@@ -41,7 +50,7 @@ const Login = () => {
           console.log(res.data);
           window.localStorage.setItem('loginId', res.data.token);
 
-          setLogin(res.data);
+          setToken(res.data);
         });
     } catch (err) {
       console.log(err);
@@ -49,45 +58,20 @@ const Login = () => {
   }
 
   return (
-    <div className="container">
-      <div className="login_box">
-        <p className="title">Log In</p>
-        <div className="login_type_area">
-          <div className="id_box">
-            <p htmlFor="input_pw">Username</p>
-            <input
-              type="text"
-              name="input_id"
-              placeholder="Enter Username"
-              value={inputId}
-              onChange={handleInputId}
-              minLength="4"
-            />
-          </div>
-          <div className="pw_box">
-            <p htmlFor="input_pw">Password</p>
-            <input
-              type="password"
-              name="input_pw"
-              placeholder="Enter Password"
-              value={inputPw}
-              onChange={handleInputPw}
-              onKeyPress={onKeyPress}
-              minLength="8"
-              className="pw_input"
-            />
-          </div>
-        </div>
-        <button className="login_btn" onClick={onClickLogin} type="button">
-          Sign In
-        </button>
-        <Link to="/register">
-          <p className="register_link">
-            <span>계정이 없는 신규사용자는 </span>Sign Up
-          </p>
-        </Link>
-      </div>
-    </div>
+    <Wrapper>
+      <Title>Log In</Title>
+      <Form>
+        <InputName>username</InputName>
+        <Input type="text" />
+        <InputName>password</InputName>
+        <Input type="password" />
+        <Button>Log In</Button>
+      </Form>
+
+      <SocialBox></SocialBox>
+      <Button>Login with Facebook</Button>
+      <Button>Login with Google</Button>
+    </Wrapper>
   );
 };
 

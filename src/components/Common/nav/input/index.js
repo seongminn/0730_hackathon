@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { searchState } from '../../../atom';
+import { searchState } from '../../../../atom';
 import { Form, Input, Btn } from './styled';
 
 const SearchInput = () => {

@@ -4,15 +4,16 @@ import './assets/fonts/fonts.css';
 
 import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import HomePage from './components/Main';
-import SearchPage from './components/Search';
-import Nav from './components/Common/nav';
+import HomePage from './components/main';
+import SearchPage from './components/search';
+import Nav from './components/common/nav';
 import DetailPage from './components/movie';
 import Login from './components/auth/login';
 import RegisterPage from './components/auth/register';
 import { useRecoilValue } from 'recoil';
-import { loginState } from './atom';
-import AllMoviePage from './components/AllMovie';
+import { tokenState } from './atom';
+import AllMoviePage from './components/allmovie';
+import AuthPage from './components/auth';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -36,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
 const RouterWrapper = styled.div``;
 
 function App() {
-  const login = useRecoilValue(loginState);
+  const token = useRecoilValue(tokenState);
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ function App() {
     console.log(storage);
 
     setLoggedIn(storage ? true : false);
-  }, [login]);
+  }, [token]);
 
   // useEffect(() => {}, [login]);
 
@@ -65,7 +66,7 @@ function App() {
             </>
           ) : (
             <>
-              <Route path="/" element={<Login />} />
+              <Route path="/" element={<AuthPage />} />
               <Route path="/register" element={<RegisterPage />} />
             </>
           )}

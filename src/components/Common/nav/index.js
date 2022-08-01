@@ -3,14 +3,14 @@ import { faClapperboard, faBars } from '@fortawesome/free-solid-svg-icons';
 
 import { Wrapper, LogoBox, Title, UserBox, SignIn, Menu } from './styled';
 
-import SearchInput from '../searchInput';
+import SearchInput from './input';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { loginState } from '../../../atom';
+import { tokenState } from '../../../atom';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const setLogin = useSetRecoilState(loginState);
+  const setToken = useSetRecoilState(tokenState);
 
   const onClickMenu = () => {
     navigate('/allMovies');
@@ -18,9 +18,9 @@ const Nav = () => {
 
   const onClickLogout = () => {
     window.localStorage.removeItem('loginId');
-    setLogin({});
+    setToken({});
 
-    window.location.reload();
+    navigate('/');
   };
   return (
     <Wrapper>
@@ -35,15 +35,15 @@ const Nav = () => {
       <UserBox>
         <SignIn onClick={() => onClickLogout()}>Sign out</SignIn>
         {/* <SignIn>{checked ? 'Sign out' : 'Sign in'}</SignIn> */}
-        <Menu>
-          <Link to="/allMovies">
+        <Link to="/allMovies">
+          <Menu>
             <FontAwesomeIcon
               icon={faBars}
               style={{ fontSize: 16, color: 'white' }}
               onClick={onClickMenu}
             />
-          </Link>
-        </Menu>
+          </Menu>
+        </Link>
       </UserBox>
     </Wrapper>
   );

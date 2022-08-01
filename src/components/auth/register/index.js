@@ -10,7 +10,6 @@ const Register = () => {
   const [inputPw, setInputPw] = useState('');
   const [inputNickname, setInputNickname] = useState('');
   const [inputLocation, setInputLocation] = useState('');
-  const [register, setRegister] = useRecoilState(registerState);
 
   const handleInputId = e => {
     setInputId(e.target.value);
