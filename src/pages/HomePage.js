@@ -21,28 +21,27 @@ const Wrapper = styled.div`
 `;
 
 const Home = () => {
-  const data = datas();
-  const loading = false;
+  // const data = datas();
+  // const loading = false;
 
-  // const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   async function getAllData() {
-  //     setLoading(true);
-  //     try {
-  //       const { data: result } = await axios.get(
-  //         'http://127.0.0.1:8000/movie/'
-  //       );
-  //       setData(result.movies);
-  //       setLoading(false);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   setLoading(true);
-  //   getAllData();
-  // }, []);
+  useEffect(() => {
+    async function getAllData() {
+      setLoading(true);
+      try {
+        const { data: result } = await axios.get(
+          'http://127.0.0.1:8000/movie/'
+        );
+        setData(result);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getAllData();
+  }, []);
 
   return (
     <>

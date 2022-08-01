@@ -2,15 +2,25 @@ import { atom } from 'recoil';
 
 export const loginState = atom({
   key: 'login',
-  default: { id: '', pw: '' },
+  default: { username: '', password: '' },
 });
 
 export const checkLoginState = atom({
   key: 'checklogin',
-  default: false,
+  default: { checked: false, username: '' },
 });
 
 export const registerState = atom({
   key: 'register',
-  default: { id: '', pw: '' },
+  default: { username: '', password: '' },
 });
+
+export const searchState = atom({
+  key: 'search',
+  default: [],
+});
+
+// export const tokenState = atom({
+//   key: 'token',
+//   default: {},
+// });

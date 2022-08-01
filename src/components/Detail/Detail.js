@@ -26,13 +26,14 @@ import {
   StaffItemImg,
   StaffItemName,
 } from './styledComponents';
+import Comment from './Comment';
 
 function Detail({ data }) {
   const rating_sum =
     parseFloat(data.rating_aud) +
     parseFloat(data.rating_cri) +
     parseFloat(data.rating_net);
-
+  console.log(data);
   return (
     <ConDiv>
       <MainDiv>
@@ -106,8 +107,8 @@ function Detail({ data }) {
               <Poster src={data.poster_url} />
             </ImgDiv>
             <StaffConDiv>
-              {data &&
-                data.staff.slice(0, 3).map((el, index) => (
+              {data.staffs &&
+                data.staffs.slice(0, 3).map((el, index) => (
                   <StaffItemDiv key={index}>
                     <StaffItemImg url={el.image_url} />
                     <StaffItemName>
@@ -118,6 +119,7 @@ function Detail({ data }) {
             </StaffConDiv>
           </RightDiv>
         </MainConDiv>
+        <Comment data={data} />
       </MainDiv>
     </ConDiv>
   );

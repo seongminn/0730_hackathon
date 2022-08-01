@@ -1,18 +1,27 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { useRecoilValue } from 'recoil';
+import { searchState } from '../atom';
+import Loading from './../components/Loading/Loading';
+import Search from '../components/Search/Search';
+import styled from 'styled-components';
 
-const Search = () => {
-  const location = useLocation();
-  const keyword = new URLSearchParams.get('keyword');
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const SearchPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const search = useRecoilValue(searchState);
 
   useEffect(() => {
     const getSearchData = async () => {
       try {
         const { data: result } = await axios.get(
-          `http://127.0.0.1:8000/movie/search?keyword=${keyword}`
+          `http://127.0.0.1:8000/movie/?search_movie=${search}`
         );
         setData(result);
         setLoading(false);
@@ -22,9 +31,13 @@ const Search = () => {
     };
     setLoading(true);
     getSearchData();
-  }, [keyword]);
-  console.log(keyword);
-  return;
+  }, [search]);
+
+  console.log(data);
+
+  return <Wrapper>{loading ? <Loading /> : <Search data={data} />}</Wrapper>;
+
+  // return <>{loading ? <Loading /> : <Search data={data} />}</>;
 };
 
-export default Search;
+export default SearchPage;

@@ -6,10 +6,11 @@ import {
   faTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   margin-bottom: 50px;
-  bottom: 0;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,6 +25,7 @@ const Socials = styled.div`
   align-items: center;
   gap: 48px;
   font-size: 24px;
+  cursor: pointer;
 `;
 
 const Links = styled.div`
@@ -42,10 +44,18 @@ const Footer = () => {
   return (
     <Wrapper>
       <Socials>
-        <FontAwesomeIcon icon={faFacebookSquare} />
-        <FontAwesomeIcon icon={faInstagram} />
-        <FontAwesomeIcon icon={faTwitter} />
-        <FontAwesomeIcon icon={faYoutube} />
+        <Link to="https://www.facebook.com/">
+          <FontAwesomeIcon icon={faFacebookSquare} />
+        </Link>
+        <Link to="https://www.instagram.com/">
+          <FontAwesomeIcon icon={faInstagram} />
+        </Link>
+        <Link to="https://www.twitter.com/">
+          <FontAwesomeIcon icon={faTwitter} />
+        </Link>
+        <Link to="https://www.youtube.com/">
+          <FontAwesomeIcon icon={faYoutube} />
+        </Link>
       </Socials>
       <Links style={{ fontSize: '18px' }}>
         <p>Conditions of Use</p>

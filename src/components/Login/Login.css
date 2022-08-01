@@ -1,7 +1,21 @@
+@font-face {
+  font-family: 'BMHANNAPro';
+  src: url('../../assets/fonts/BMHANNAPro.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BMHANNAAir';
+  src: url('../../assets/fonts/BMHANNAAir_ttf.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: content-box;
   text-decoration: none;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'BMHANNAAir', sans-serif;
 }
 
 body {
@@ -21,11 +35,15 @@ body {
   width: 518px;
   height: 417px;
   line-height: 100%;
-  vertical-align: middle;
   margin: 0 auto;
   text-align: center;
   background: rgb(253, 254, 254, 0.8);
+  /* background-color: #000; */
   border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -35,19 +53,21 @@ body {
   font-weight: bolder;
   border-radius: 2px;
   color: #be123c;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .login_title {
   color: #be123c;
   font-size: 24px;
-  margin-bottom: 15px;
 }
 
 .login_type_area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   height: 150px;
   width: 518px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .login_type_area p {
@@ -56,6 +76,7 @@ body {
   text-decoration: none;
   width: 289px;
   margin-right: auto;
+  font-size: 20px;
 }
 
 .login_type_area input {
@@ -63,10 +84,11 @@ body {
   border-bottom: 1px solid #be123c;
   outline: none;
   width: 289px;
-  height: 20px;
-  color: #be123c;
+  height: 40px;
+  color: #be123c !important;
   background: transparent;
   margin-top: 5px;
+  font-size: 18px;
 }
 
 .login_type_area input:hover {
@@ -74,7 +96,7 @@ body {
   border-bottom: 1px solid white;
   outline: none;
   width: 289px;
-  height: 20px;
+  height: 40px;
   color: #be123c;
   background: transparent;
   transition: 0.75s;

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { loginState } from '../../atom';
@@ -7,6 +8,8 @@ import './Login.css';
 const Login = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const [login, setLogin] = useRecoilState(loginState);
 
   const handleInputId = e => {
@@ -18,8 +21,35 @@ const Login = () => {
   };
 
   const onClickLogin = () => {
-    setLogin({ id: inputId, pw: inputPw });
+    setLogin({ username: inputId, password: inputPw });
+    postLoginData();
   };
+
+  const onKeyPress = e => {
+    e.key === 'Enter' && onClickLogin();
+  };
+
+  async function postLoginData() {
+    setLoading(true);
+
+    try {
+      await axios
+        .post(
+          'http://127.0.0.1:8000/account/login',
+          { username: inputId, password: inputPw },
+          {
+            withCredentials: true,
+          }
+        )
+        .then(res => {
+          setLogin(res.data);
+
+          setLoading(false);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="container">
@@ -34,6 +64,7 @@ const Login = () => {
               placeholder="Enter Username"
               value={inputId}
               onChange={handleInputId}
+              minLength="4"
             />
           </div>
           <div className="pw_box">
@@ -44,6 +75,9 @@ const Login = () => {
               placeholder="Enter Password"
               value={inputPw}
               onChange={handleInputPw}
+              onKeyPress={onKeyPress}
+              minLength="8"
+              className="pw_input"
             />
           </div>
         </div>
