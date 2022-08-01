@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './assets/fonts/fonts.css';
 
@@ -36,9 +36,18 @@ const GlobalStyle = createGlobalStyle`
 const RouterWrapper = styled.div``;
 
 function App() {
-  // const login = useRecoilValue(loginState)
+  const login = useRecoilValue(loginState);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  const loggedIn = window.sessionStorage.getItem('loginId');
+  useEffect(() => {
+    const storage = window.localStorage.getItem('loginId');
+    console.log(storage);
+
+    setLoggedIn(storage ? true : false);
+  }, [login]);
+
+  // useEffect(() => {}, [login]);
+
   // window.sessionStorage.clear();
 
   return (
