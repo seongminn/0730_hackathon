@@ -6,7 +6,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
-import Nav from './components/Common/Nav';
+import Nav from './components/Common/nav';
 import DetailPage from './pages/DetailPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -38,7 +38,7 @@ const RouterWrapper = styled.div``;
 function App() {
   const login = useRecoilValue(loginState);
   const checked = useRecoilValue(checkLoginState);
-  console.log(checked);
+
   // const logedIn = window.sessionStorage.getItem('loginId');
   // window.sessionStorage.clear();
 
@@ -48,7 +48,7 @@ function App() {
       <Nav />
       <RouterWrapper>
         <Routes>
-          {checked.checked ? (
+          {login ? (
             <>
               <Route exact path="/search" element={<SearchPage />} />
               <Route path="/movie/:id" element={<DetailPage />} />

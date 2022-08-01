@@ -19,3 +19,8 @@ export const searchState = atom({
   key: 'search',
   default: [],
 });
+
+// export const tokenState = atom({
+//   key: 'token',
+//   default: {},
+// });

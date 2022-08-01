@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Pagination from '../components/AllMovie/Pagination';
+import Pagination from '../components/AllMovie';
 
 const Wrapper = styled.div`
   height: 100vh;

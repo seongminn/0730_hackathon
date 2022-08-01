@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { commentState } from '../../atom';
-import { useRecoilState } from 'recoil';
+import { commentState, tokenState } from '../../atom';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   CommentBoxDiv,
   CommentConDiv,
@@ -11,11 +11,14 @@ import {
 } from './styledComponents';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { loginState } from './../../atom';
 
 function Comment({ data }) {
   const { id } = useParams();
   const [input, setInput] = useState();
   const [commentlist, setCommentList] = useState(data.comments);
+  const login = useRecoilValue(loginState);
+  // const token = useRecoilValue(tokenState);
   // const [inputComment, setInputComment] = useRecoilState(commentState);
 
   const handleInput = e => {
@@ -31,8 +34,9 @@ function Comment({ data }) {
     addComment();
     console.log(commentlist);
   };
-
+  // console.log(token.config.withCredentials);
   function addComment() {
+    // if (token.config.withCredentials)
     setCommentList(comment => {
       const prevComment = [...comment];
 
@@ -43,6 +47,7 @@ function Comment({ data }) {
   }
 
   const postComment = () => {
+    console.log(login);
     try {
       axios.post(`http://127.0.0.1:8000/movie/comment/`, {
         comment: input,

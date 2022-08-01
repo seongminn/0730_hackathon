@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { loginState } from '../../atom';
@@ -7,6 +8,8 @@ import './Login.css';
 const Login = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const [login, setLogin] = useRecoilState(loginState);
 
   const handleInputId = e => {
@@ -19,12 +22,34 @@ const Login = () => {
 
   const onClickLogin = () => {
     setLogin({ username: inputId, password: inputPw });
-    console.log(login);
+    postLoginData();
   };
 
   const onKeyPress = e => {
     e.key === 'Enter' && onClickLogin();
   };
+
+  async function postLoginData() {
+    setLoading(true);
+
+    try {
+      await axios
+        .post(
+          'http://127.0.0.1:8000/account/login',
+          { username: inputId, password: inputPw },
+          {
+            withCredentials: true,
+          }
+        )
+        .then(res => {
+          setLogin(res.data);
+
+          setLoading(false);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="container">

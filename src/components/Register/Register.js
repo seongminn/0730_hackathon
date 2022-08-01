@@ -54,7 +54,7 @@ const Register = () => {
         >
           Sign Up
         </button>
-        <Link to="/login">
+        <Link to="/">
           <p className="login_link">
             <span>이미 가입한 기존사용자는 </span>Log In
           </p>

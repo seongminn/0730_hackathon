@@ -85,7 +85,7 @@ body {
   outline: none;
   width: 289px;
   height: 40px;
-  color: #be123c;
+  color: #be123c !important;
   background: transparent;
   margin-top: 5px;
   font-size: 18px;
