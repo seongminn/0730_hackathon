@@ -31,6 +31,23 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     font-family: "BMHANNAAir", sans-serif;
     font-size: 1.2rem;
+
+		&::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 3px;
+		background-color: gray;
+	}
+	&::-webkit-scrollbar-button {
+		width: 0;
+		height: 0;
+	}
+
   }
 `;
 
@@ -67,7 +84,6 @@ function App() {
           ) : (
             <>
               <Route path="/" element={<AuthPage />} />
-              <Route path="/register" element={<RegisterPage />} />
             </>
           )}
         </Routes>

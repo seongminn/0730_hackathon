@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { searchState } from '../../atom';
 import Loading from '../loading';
-import Search from './result/Search';
+import Search from './result';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`

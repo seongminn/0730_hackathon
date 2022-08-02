@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
-import { useRecoilState } from 'recoil';
-import { registerState } from '../../../atom';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { authState, registerState } from '../../../atom';
 import axios from 'axios';
 
 const Register = () => {
@@ -10,6 +10,7 @@ const Register = () => {
   const [inputPw, setInputPw] = useState('');
   const [inputNickname, setInputNickname] = useState('');
   const [inputLocation, setInputLocation] = useState('');
+  const setAuth = useSetRecoilState(authState);
 
   const handleInputId = e => {
     setInputId(e.target.value);
@@ -89,11 +90,9 @@ const Register = () => {
         <button className="register_btn" onClick={postLoginData} type="button">
           Sign Up
         </button>
-        <Link to="/">
-          <p className="login_link">
-            <span>이미 가입한 기존사용자는 </span>Log In
-          </p>
-        </Link>
+        <p className="login_link" onClick={() => setAuth(true)}>
+          <span>이미 가입한 기존사용자는 </span>Log In
+        </p>
       </div>
     </div>
   );

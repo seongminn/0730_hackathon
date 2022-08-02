@@ -8,15 +8,27 @@ import {
   Input,
   Button,
   SocialBox,
+  SocialBtn,
+  LineBox,
+  BtnText,
+  Icon,
+  Line,
+  ChangeAuth,
 } from './styled';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { tokenState } from '../../../atom';
-import './Login.css';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { authState, tokenState } from '../../../atom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faTwitter,
+  faGithub,
+  faGoogle,
+} from '@fortawesome/free-brands-svg-icons';
 
 const Login = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
+  const setAuth = useSetRecoilState(authState);
 
   const [token, setToken] = useRecoilState(tokenState);
 
@@ -28,15 +40,8 @@ const Login = () => {
     setInputPw(event.target.value);
   };
 
-  const onClickLogin = () => {
-    postLoginData();
-  };
-
-  const onKeyPress = e => {
-    e.key === 'Enter' && onClickLogin();
-  };
-
-  async function postLoginData() {
+  async function postLoginData(e) {
+    e.preventDefault();
     try {
       await axios
         .post(
@@ -57,20 +62,39 @@ const Login = () => {
     }
   }
 
+  const changeAuth = () => {
+    setAuth(false);
+    console.log('to signup');
+  };
+
   return (
     <Wrapper>
       <Title>Log In</Title>
-      <Form>
+      <Form onSubmit={e => postLoginData(e)}>
         <InputName>username</InputName>
-        <Input type="text" />
+        <Input type="text" value={inputId} onChange={handleInputId} />
         <InputName>password</InputName>
-        <Input type="password" />
+        <Input type="password" value={inputPw} onChange={handleInputPw} />
         <Button>Log In</Button>
       </Form>
 
-      <SocialBox></SocialBox>
-      <Button>Login with Facebook</Button>
-      <Button>Login with Google</Button>
+      <Line />
+
+      <SocialBox>
+        <SocialBtn style={{ background: '#DE4C39' }}>
+          <Icon>
+            <FontAwesomeIcon icon={faGoogle} />
+          </Icon>
+          <BtnText>Continue with Google</BtnText>
+        </SocialBtn>
+        <SocialBtn style={{ background: '#323232' }}>
+          <Icon>
+            <FontAwesomeIcon icon={faGithub} />
+          </Icon>
+          <BtnText>Continue with GitHub</BtnText>
+        </SocialBtn>
+      </SocialBox>
+      <ChangeAuth onClick={changeAuth}>Don't have an accout?</ChangeAuth>
     </Wrapper>
   );
 };
