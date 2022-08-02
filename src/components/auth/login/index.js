@@ -15,22 +15,16 @@ import {
   Line,
   ChangeAuth,
 } from './styled';
-import { Link } from 'react-router-dom';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { authState, tokenState } from '../../../atom';
+import { useSetRecoilState } from 'recoil';
+import { tokenState } from '../../../atom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faTwitter,
-  faGithub,
-  faGoogle,
-} from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
-const Login = () => {
+const Login = ({ setAuth }) => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
-  const setAuth = useSetRecoilState(authState);
 
-  const [token, setToken] = useRecoilState(tokenState);
+  const setToken = useSetRecoilState(tokenState);
 
   const handleInputId = e => {
     setInputId(e.target.value);

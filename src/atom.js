@@ -15,7 +15,7 @@ export const searchState = atom({
   default: [],
 });
 
-export const authState = atom({
-  key: 'auth',
+export const loginState = atom({
+  key: 'login',
   default: true,
 });

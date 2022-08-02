@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import './Register.css';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { authState, registerState } from '../../../atom';
 import axios from 'axios';
 
-const Register = () => {
+const Register = ({ setAuth }) => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
   const [inputNickname, setInputNickname] = useState('');
   const [inputLocation, setInputLocation] = useState('');
-  const setAuth = useSetRecoilState(authState);
 
   const handleInputId = e => {
     setInputId(e.target.value);

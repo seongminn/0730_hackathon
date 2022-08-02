@@ -31,7 +31,6 @@ const Nav = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
-    console.log(scroll);
   });
 
   return (

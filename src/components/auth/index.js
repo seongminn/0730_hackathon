@@ -1,7 +1,6 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Login from './login';
-import { useRecoilValue } from 'recoil';
-import { authState } from '../../atom';
 import Register from './register';
 
 const Wrapper = styled.div`
@@ -21,9 +20,14 @@ const Wrapper = styled.div`
 `;
 
 const AuthPage = () => {
-  const auth = useRecoilValue(authState);
+  const [auth, setAuth] = useState(true);
+
   console.log(auth);
-  return <Wrapper>{auth ? <Login /> : <Register />}</Wrapper>;
+  return (
+    <Wrapper>
+      {auth ? <Login setAuth={setAuth} /> : <Register setAuth={setAuth} />}
+    </Wrapper>
+  );
 };
 
 export default AuthPage;
