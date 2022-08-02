@@ -4,15 +4,17 @@ import './assets/fonts/fonts.css';
 
 import styled, { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+
 import HomePage from './components/Main';
 import SearchPage from './components/Search';
 import Nav from './components/Common/nav';
 import DetailPage from './components/movie';
 import Login from './components/auth/login';
 import RegisterPage from './components/auth/register';
+import AllMoviePage from './components/AllMovie';
+
 import { useRecoilValue } from 'recoil';
 import { loginState } from './atom';
-import AllMoviePage from './components/AllMovie';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -34,44 +36,48 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const RouterWrapper = styled.div``;
+const Template = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 function App() {
-  const login = useRecoilValue(loginState);
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const login = useRecoilValue(loginState);
+  // const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const storage = window.localStorage.getItem('loginId');
-    console.log(storage);
+  // useEffect(() => {
+  //   const storage = window.localStorage.getItem('loginId');
+  //   console.log(storage);
 
-    setLoggedIn(storage ? true : false);
-  }, [login]);
+  //   setLoggedIn(storage ? true : false);
+  // }, [login]);
 
   // useEffect(() => {}, [login]);
 
   // window.sessionStorage.clear();
 
   return (
-    <>
+    <Template>
       <GlobalStyle />
       <Nav />
       <RouterWrapper>
         <Routes>
-          {loggedIn ? (
-            <>
-              <Route exact path="/search" element={<SearchPage />} />
-              <Route path="/movie/:id" element={<DetailPage />} />
-              <Route path="/allMovies" element={<AllMoviePage />} />
-              <Route path="/" element={<HomePage />} />
-            </>
-          ) : (
-            <>
+          {/* {loggedIn ? ( */}
+          <>
+            <Route path="/" element={<HomePage />} />
+            <Route exact path="/search" element={<SearchPage />} />
+            <Route path="/movie/:id" element={<DetailPage />} />
+            <Route path="/allMovies" element={<AllMoviePage />} />
+          </>
+          {/* ) : ( */}
+          {/* <>
               <Route path="/" element={<Login />} />
               <Route path="/register" element={<RegisterPage />} />
-            </>
-          )}
+            </> */}
+          {/* )} */}
         </Routes>
       </RouterWrapper>
-    </>
+    </Template>
   );
 }
 
