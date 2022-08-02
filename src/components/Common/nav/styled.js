@@ -4,12 +4,15 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 80px;
   position: fixed;
-  background-color: transparent;
-  z-index: 999;
+  background-color: ${props =>
+    props.visiblity ? 'rgba(0,0,0,0.7)' : 'transparent'};
+  backdrop-filter: ${props => props.visiblity && 'blur(30px)'};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 48px;
+  z-index: 9999;
+  transition: backdrop-filter 0.2s linear 0s, background-color 0.3s linear 0s;
 `;
 
 export const LogoBox = styled.div`

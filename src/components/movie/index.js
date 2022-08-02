@@ -9,6 +9,7 @@ function DetailPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
+  console.log(typeof id);
 
   useEffect(() => {
     async function getDetailData() {

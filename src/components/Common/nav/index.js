@@ -7,10 +7,12 @@ import SearchInput from './input';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { tokenState } from '../../../atom';
+import { useEffect, useState } from 'react';
 
 const Nav = () => {
   const navigate = useNavigate();
   const setToken = useSetRecoilState(tokenState);
+  const [scroll, setScroll] = useState(0);
 
   const onClickMenu = () => {
     navigate('/allMovies');
@@ -22,8 +24,18 @@ const Nav = () => {
 
     navigate('/');
   };
+
+  const onScroll = () => {
+    setScroll(window.scrollY || document.documentElement.scrollTop);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    console.log(scroll);
+  });
+
   return (
-    <Wrapper>
+    <Wrapper visiblity={scroll > 80}>
       <Link to="/">
         <LogoBox>
           <FontAwesomeIcon icon={faClapperboard} style={{ fontSize: 32 }} />

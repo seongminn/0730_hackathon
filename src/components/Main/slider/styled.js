@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 export const Slider = styled.div`
   position: relative;
-  top: 90vh;
-  width: 80%;
+  width: 100%;
   height: 300px;
   margin: 0 auto;
+  margin-bottom: 200px;
 `;
 
 export const Row = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   position: absolute;
   gap: 10px;
   width: 100%;
@@ -21,12 +21,12 @@ export const Row = styled(motion.div)`
 
 export const Btn = styled.button`
   position: absolute;
-  bottom: 50%;
   font-size: 32px;
   background-color: transparent;
   color: white;
   border-color: transparent;
   z-index: 50;
+  outline: none;
 
   cursor: pointer;
 `;
@@ -35,6 +35,7 @@ export const Box = styled(motion.div)`
   width: 100%;
   height: 300px;
   font-size: 66px;
+
   cursor: pointer;
 `;
 

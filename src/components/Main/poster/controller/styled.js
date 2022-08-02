@@ -2,11 +2,7 @@ import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: absolute;
   /* top: calc(50% - ${props => props.height / 2}px); */
-  top: 50%;
-
-  right: 35px;
   display: flex;
   flex-direction: column;
   gap: 10px;

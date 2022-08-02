@@ -1,4 +1,9 @@
-import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleLeft,
+  faAngleRight,
+  faCaretLeft,
+  faCaretRight,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
@@ -29,7 +34,7 @@ const boxVars = {
   },
 };
 
-const offset = 6;
+const offset = 8;
 
 const MainSlider = ({ data }) => {
   const [index, setIndex] = useState(0);
@@ -66,7 +71,8 @@ const MainSlider = ({ data }) => {
           key="left"
           onClick={() => increaseIndex('prev')}
         >
-          <FontAwesomeIcon icon={faCaretLeft} />
+          {/* <FontAwesomeIcon icon={faCaretLeft} /> */}
+          <FontAwesomeIcon icon={faAngleLeft} />
         </Btn>
         <Row
           custom={back}
@@ -91,7 +97,8 @@ const MainSlider = ({ data }) => {
           key="right"
           onClick={() => increaseIndex('next')}
         >
-          <FontAwesomeIcon icon={faCaretRight} />
+          {/* <FontAwesomeIcon icon={faCaretRight} /> */}
+          <FontAwesomeIcon icon={faAngleRight} />
         </Btn>
       </AnimatePresence>
     </Slider>

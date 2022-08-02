@@ -32,6 +32,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: "BMHANNAAir", sans-serif;
     font-size: 1.2rem;
 
+		overflow-x: hidden;
+
 		&::-webkit-scrollbar {
 		width: 6px;
 		height: 6px;

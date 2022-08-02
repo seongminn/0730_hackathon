@@ -24,42 +24,36 @@ const MainPoster = () => {
   const DesBoxRef = useRef();
 
   return (
-    <>
-      <Wrapper key={mainMovies[page].id}>
-        <Banner bgPhoto={mainMovies[page].backdrop_path} />
-        <Content>
-          <DesBox
-            ref={DesBoxRef}
-            height={DesBoxRef.current ? DesBoxRef.current.clientHeight : 4}
+    <Wrapper bgPhoto={mainMovies[page].backdrop_path}>
+      <Content>
+        <DesBox
+          ref={DesBoxRef}
+          height={DesBoxRef.current ? DesBoxRef.current.clientHeight : 4}
+        >
+          <Title>{mainMovies[page].title}</Title>
+          <Ratings>
+            {[
+              ...Array(
+                Math.trunc(Math.round(mainMovies[page].vote_average) / 2)
+              ),
+            ].map((_, index) => (
+              <FontAwesomeIcon key={index} icon={faStar} />
+            ))}
+            {Math.trunc(Math.round(mainMovies[page].vote_average) % 2) ? (
+              <FontAwesomeIcon icon={faStarHalfStroke} />
+            ) : null}
+          </Ratings>
+          <Description>{mainMovies[page].overview}</Description>
+          <Button
+            onClick={() => window.open(`${mainMovies[page].trailer}`, '_blank')}
           >
-            <Title>{mainMovies[page].title}</Title>
-            <Ratings>
-              {[
-                ...Array(
-                  Math.trunc(Math.round(mainMovies[page].vote_average) / 2)
-                ),
-              ].map((_, index) => (
-                <FontAwesomeIcon key={index} icon={faStar} />
-              ))}
-              {Math.trunc(Math.round(mainMovies[page].vote_average) % 2) ? (
-                <FontAwesomeIcon icon={faStarHalfStroke} />
-              ) : null}
-            </Ratings>
-            <Description>{mainMovies[page].overview}</Description>
-            <Button
-              onClick={() =>
-                window.open(`${mainMovies[page].trailer}`, '_blank')
-              }
-            >
-              <FontAwesomeIcon icon={faCirclePlay} />
-              Watch Trailer
-            </Button>
-          </DesBox>
-        </Content>
-      </Wrapper>
-
-      <MainController total={total} page={page} setPage={setPage} />
-    </>
+            <FontAwesomeIcon icon={faCirclePlay} />
+            Watch Trailer
+          </Button>
+        </DesBox>
+        <MainController total={total} page={page} setPage={setPage} />
+      </Content>
+    </Wrapper>
   );
 };
 
