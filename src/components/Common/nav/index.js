@@ -5,14 +5,15 @@ import { Wrapper, LogoBox, Title, UserBox, SignIn, Menu } from './styled';
 
 import SearchInput from './input';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-import { tokenState } from '../../../atom';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { loginState, tokenState } from '../../../atom';
 import { useEffect, useState } from 'react';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const setToken = useSetRecoilState(tokenState);
+  const [token, setToken] = useRecoilState(tokenState);
   const [scroll, setScroll] = useState(0);
+  const [storage, setStorage] = useState(false);
 
   const onClickMenu = () => {
     navigate('/allMovies');
@@ -33,6 +34,10 @@ const Nav = () => {
     window.addEventListener('scroll', onScroll);
   });
 
+  useEffect(() => {
+    setStorage(localStorage.getItem('loginId') && true);
+  }, [token]);
+
   return (
     <Wrapper visiblity={scroll > 80}>
       <Link to="/">
@@ -44,7 +49,12 @@ const Nav = () => {
 
       <SearchInput />
       <UserBox>
-        <SignIn onClick={() => onClickLogout()}>Sign out</SignIn>
+        <SignIn
+          onClick={() => onClickLogout()}
+          style={storage || { opacity: '0' }}
+        >
+          Sign out
+        </SignIn>
         {/* <SignIn>{checked ? 'Sign out' : 'Sign in'}</SignIn> */}
         <Link to="/allMovies">
           <Menu>

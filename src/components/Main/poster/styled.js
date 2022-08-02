@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     url(${props => props.bgPhoto});
   /* background-image: url(${props => props.bgPhoto}); */
   background-size: cover;
+  background-position: top center;
 `;
 
 export const Content = styled.div`

@@ -77,7 +77,7 @@ export const Line = styled.hr`
     position: relative;
     top: -11px;
 
-    background-color: #000;
+    background-color: transparent;
     padding: 0 10px;
   }
 `;

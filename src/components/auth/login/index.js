@@ -19,10 +19,12 @@ import { useSetRecoilState } from 'recoil';
 import { tokenState } from '../../../atom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setAuth }) => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
+  const navigate = useNavigate();
 
   const setToken = useSetRecoilState(tokenState);
 
@@ -47,6 +49,9 @@ const Login = ({ setAuth }) => {
         )
         .then(res => {
           console.log(res.data);
+          alert('로그인에 성공하였습니다.');
+          navigate(-1);
+
           window.localStorage.setItem('loginId', res.data.token);
 
           setToken(res.data);

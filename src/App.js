@@ -15,6 +15,7 @@ import AllMoviePage from './components/allmovie';
 
 import { useRecoilValue } from 'recoil';
 import { loginState } from './atom';
+import AuthPage from './components/auth';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -87,6 +88,7 @@ function App() {
             <Route exact path="/search" element={<SearchPage />} />
             <Route path="/movie/:id" element={<DetailPage />} />
             <Route path="/allMovies" element={<AllMoviePage />} />
+            <Route path="/login" element={<AuthPage />} />
           </>
           {/* ) : ( */}
           {/* <>
