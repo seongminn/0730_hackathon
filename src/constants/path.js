@@ -1,7 +1,7 @@
 const PATH = {
   MAIN: '/',
   ALLMOVIES: '/allMovies',
-  DETAIL: '/movie/:id',
+  DETAIL: '/movie',
 };
 
 export default PATH;
