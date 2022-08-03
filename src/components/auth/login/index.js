@@ -93,7 +93,7 @@ const Login = ({ setAuth }) => {
           <BtnText>Continue with GitHub</BtnText>
         </SocialBtn>
       </SocialBox>
-      <ChangeAuth onClick={changeAuth}>Don't have an accout?</ChangeAuth>
+      <ChangeAuth onClick={changeAuth}>NOT A MEMBER YET?</ChangeAuth>
     </Wrapper>
   );
 };

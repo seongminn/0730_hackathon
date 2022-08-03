@@ -1,5 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClapperboard, faBars } from '@fortawesome/free-solid-svg-icons';
+import {
+  faClapperboard,
+  faBars,
+  faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { Wrapper, LogoBox, Title, UserBox, SignIn, Menu } from './styled';
 
@@ -47,24 +51,27 @@ const Nav = () => {
         </LogoBox>
       </Link>
 
-      <SearchInput />
       <UserBox>
         <SignIn
           onClick={() => onClickLogout()}
-          style={storage || { opacity: '0' }}
+          style={storage || { display: 'none' }}
         >
           Sign out
         </SignIn>
-        {/* <SignIn>{checked ? 'Sign out' : 'Sign in'}</SignIn> */}
-        <Link to="/allMovies">
-          <Menu>
-            <FontAwesomeIcon
-              icon={faBars}
-              style={{ fontSize: 16, color: 'white' }}
-              onClick={onClickMenu}
-            />
-          </Menu>
+        <Link to="/search">
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            style={{ fontSize: 16, color: 'white' }}
+          />
         </Link>
+
+        {/* <SignIn>{checked ? 'Sign out' : 'Sign in'}</SignIn> */}
+        <Menu>
+          <FontAwesomeIcon
+            icon={faBars}
+            style={{ fontSize: 16, color: 'white' }}
+          />
+        </Menu>
       </UserBox>
     </Wrapper>
   );

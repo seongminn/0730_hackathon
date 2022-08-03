@@ -9,6 +9,8 @@ export const Wrapper = styled.div`
   /* background-image: url(${props => props.bgPhoto}); */
   background-size: cover;
   background-position: top center;
+
+  transition: all 1s ease-in-out;
 `;
 
 export const Content = styled.div`

@@ -34,8 +34,9 @@ export const Title = styled.h2`
 
 export const UserBox = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 27px;
+  gap: 3rem;
 `;
 
 export const SignIn = styled.p`

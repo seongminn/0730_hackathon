@@ -19,10 +19,18 @@ import AuthPage from './components/auth';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
-  * {
+	body, html {
     margin: 0;
     padding: 0;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  * {
     box-sizing: border-box;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
   }
   a {
     text-decoration: none;
@@ -33,27 +41,10 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     font-family: "BMHANNAAir", sans-serif;
     font-size: 1.2rem;
-
+		overflow: overlay;
 		overflow-x: hidden;
-
-		&::-webkit-scrollbar {
-		width: 6px;
-		height: 6px;
-	}
-	&::-webkit-scrollbar-track {
-		background-color: transparent;
-	}
-	&::-webkit-scrollbar-thumb {
-		border-radius: 3px;
-		background-color: gray;
-	}
-	&::-webkit-scrollbar-button {
-		width: 0;
-		height: 0;
-	}
-
   }
-`;
+	`;
 
 const RouterWrapper = styled.div``;
 const Template = styled.div`
