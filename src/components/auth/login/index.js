@@ -1,22 +1,26 @@
-import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { useRecoilState } from 'recoil';
-import { loginState } from '../../../atom';
+import { loginState, userState } from '../../../store/atom';
+
 import './Login.css';
+import authAPI from './../../../apis/authAPI';
+import PATH from './../../../constants/path';
 
 const Login = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
-
   const [login, setLogin] = useRecoilState(loginState);
+  const [user, setUser] = useRecoilState(userState);
+  const navigate = useNavigate();
 
   const handleInputId = e => {
     setInputId(e.target.value);
   };
 
-  const handleInputPw = event => {
-    setInputPw(event.target.value);
+  const handleInputPw = e => {
+    setInputPw(e.target.value);
   };
 
   const onClickLogin = () => {
@@ -28,23 +32,33 @@ const Login = () => {
   };
 
   async function postLoginData() {
-    try {
-      await axios
-        .post(
-          'http://127.0.0.1:8000/account/login',
-          { username: inputId, password: inputPw },
-          {
-            withCredentials: true,
-          }
-        )
-        .then(res => {
-          console.log(res.data);
-          window.localStorage.setItem('loginId', res.data.token);
+    // try {
+    //   await axios
+    //     .post(
+    //       'http://127.0.0.1:8000/account/login',
+    //       { username: inputId, password: inputPw },
+    //       {
+    //         withCredentials: true,
+    //       }
+    //     )
+    //     .then(res => {
+    //       console.log(res.data);
+    //       window.localStorage.setItem('loginId', res.data.token);
 
-          setLogin(res.data);
-        });
-    } catch (err) {
-      console.log(err);
+    //       setLogin(res.data);
+    //     });
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    // setInput({ username: inputId, password: inputPw });
+    try {
+      const input = { username: inputId, password: inputPw };
+      const data = await authAPI.login({ input });
+      setLogin({ isLogin: true, accessToken: data.token });
+      setUser({ nickname: data.nickname });
+      setTimeout(navigate(-1), 1000);
+    } catch (error) {
+      console.log('로그인 오류');
     }
   }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, cloneElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 
@@ -28,34 +28,50 @@ import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 // } from './styled';
 // import Comment from '../comment';
 import { useRecoilValue } from 'recoil';
-import { loginState } from './../../../atom';
-import { useNavigate } from 'react-router-dom';
+import { loginState } from '../../../store/atom';
+import { useNavigate, useParams } from 'react-router-dom';
+import detailAPI from './../../../apis/detailAPI';
 
-function Detail({ data }) {
+function Detail() {
   // const rating_sum =
   //   parseFloat(data.rating_aud) +
   //   parseFloat(data.rating_cri) +
   //   parseFloat(data.rating_net);
+  const [data, setData] = useState(null);
   const login = useRecoilValue(loginState);
-  const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const params = useParams();
 
   useEffect(() => {
-    const storage = window.localStorage.getItem('loginId');
-    setLoggedIn(storage ? true : false);
-  }, [login]);
+    async function getDetail() {
+      try {
+        const data = await detailAPI.getDetail(params.id);
+        setData(data);
+        console.log(data);
+      } catch (error) {
+        throw Error('getDetail 실패');
+      }
+    }
+    getDetail();
+  }, []);
 
-  function toLogin() {
-    alert('로그인 후 이용해주세요');
-    navigate('/login');
-  }
+  // useEffect(() => {
+  //   const storage = window.localStorage.getItem('loginId');
+  //   setLoggedIn(storage ? true : false);
+  // }, [login]);
 
-  function handleLoggedIn() {
-    console.log(loggedIn);
-    loggedIn ? console.log('login') : toLogin();
-  }
+  // function toLogin() {
+  //   alert('로그인 후 이용해주세요');
+  //   navigate('/login');
+  // }
+
+  // function handleLoggedIn() {
+  //   console.log(loggedIn);
+  //   loggedIn ? console.log('login') : toLogin();
+  // }
 
   return (
+    <div></div>
     // <ConDiv>
     //   <MainDiv>
     //     <MainConDiv>
@@ -143,12 +159,12 @@ function Detail({ data }) {
     //     <Comment data={data} />
     //   </MainDiv>
     // </ConDiv>
-    <div
-      onClick={handleLoggedIn}
-      style={{ position: 'fixed', top: '500px', left: '500px' }}
-    >
-      로그인?
-    </div>
+    // <div
+    //   onClick={handleLoggedIn}
+    //   style={{ position: 'fixed', top: '500px', left: '500px' }}
+    // >
+    //   로그인?
+    // </div>
   );
 }
 

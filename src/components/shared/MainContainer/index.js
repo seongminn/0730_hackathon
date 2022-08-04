@@ -1,8 +1,8 @@
 import React from 'react';
-import { MainContainer } from './styled';
+import { Container } from './styled';
 
 const MainContainer = ({ children }) => {
-  return <MainContainer>{children}</MainContainer>;
+  return <Container>{children}</Container>;
 };
 
 export default MainContainer;
