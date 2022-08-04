@@ -46,6 +46,7 @@ function Detail({ data }) {
     parseFloat(data.rating_net);
   const token = useRecoilValue(tokenState);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [direction, setDirection] = useState(false);
   const navigate = useNavigate();
   const detailRef = useRef(null);
 
@@ -67,8 +68,24 @@ function Detail({ data }) {
   const onClickArrow = () => {
     const targetHeight = detailRef.current.clientHeight;
 
-    window.scrollTo({ top: targetHeight, behavior: 'smooth' });
+    direction
+      ? window.scrollTo({ top: targetHeight, behavior: 'smooth' })
+      : window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const onScroll = () => {
+    // console.log(window.scrollY);
+
+    if (window.scrollY > window.innerHeight * 0.5) {
+      setDirection(false);
+    } else if (window.scrollY < window.innerHeight * 0.5) {
+      setDirection(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+  });
 
   return (
     <>
@@ -164,7 +181,11 @@ function Detail({ data }) {
             <Comment data={data} />
           </CommentWrapper>
           <ArrowBtn onClick={onClickArrow}>
-            <FontAwesomeIcon icon={faAngleDown} />
+            {direction ? (
+              <FontAwesomeIcon icon={faAngleDown} />
+            ) : (
+              <FontAwesomeIcon icon={faAngleUp} />
+            )}
           </ArrowBtn>
         </Wrapper>
       ) : (
