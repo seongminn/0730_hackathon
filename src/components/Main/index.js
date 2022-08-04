@@ -4,7 +4,7 @@
 // import { useState } from 'react';
 // import { Link } from 'react-router-dom';
 // import { useQuery } from 'react-query';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import styled from 'styled-components';
 // import { datas, getMovie } from '../api';
@@ -13,6 +13,7 @@ import MainPoster from './poster';
 import Loading from '../loading';
 import Footer from './footer';
 import { useQuery } from 'react-query';
+import axios from 'axios';
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,13 +26,15 @@ const Home = () => {
 
   // const [data, setData] = useState([]);
   // const [loading, setLoading] = useState(false);
-  const getApi = async () => {
-    const res = await fetch('http://127.0.0.1:8000/movie/');
+  // const getApi = async () => {
+  //   const res = await fetch('http://127.0.0.1:8000/movie/');
 
-    return await res.json();
-  };
+  //   return await res.json();
+  // };
 
-  const { data, isLoading: loading } = useQuery(['moviedata'], getApi);
+  const { data, isLoading: loading } = useQuery(['moviedata'], () =>
+    axios.get('http://127.0.0.1:8000/movie/').then(data => data)
+  );
 
   // useEffect(() => {
   //   async function getAllData() {
@@ -60,9 +63,10 @@ const Home = () => {
         <>
           <Wrapper>
             <MainPoster />
-            <MainSlider data={data} />
-            <MainSlider data={data} />
-            <MainSlider data={data} />
+
+            <MainSlider data={data ? data.data : []} />
+            <MainSlider data={data ? data.data : []} />
+            <MainSlider data={data ? data.data : []} />
           </Wrapper>
           <Footer />
         </>

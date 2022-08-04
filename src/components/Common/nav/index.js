@@ -52,12 +52,20 @@ const Nav = () => {
       </Link>
 
       <UserBox>
-        <SignIn
-          onClick={() => onClickLogout()}
-          style={storage || { display: 'none' }}
-        >
-          Sign out
-        </SignIn>
+        <>
+          {storage ? (
+            <SignIn
+              onClick={() => onClickLogout()}
+              style={storage || { display: 'none' }}
+            >
+              Sign out
+            </SignIn>
+          ) : (
+            <Link to="/login">
+              <SignIn>Sign In</SignIn>
+            </Link>
+          )}
+        </>
         <Link to="/search">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}

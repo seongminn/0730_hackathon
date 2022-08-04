@@ -27,3 +27,9 @@ export const Input = styled.input`
 `;
 
 export const Result = styled.div``;
+
+export const Page = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

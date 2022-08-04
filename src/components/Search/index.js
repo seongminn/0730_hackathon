@@ -6,7 +6,8 @@ import Loading from '../loading';
 import Search from './result';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
-import { Content, Input, InputBox, Result } from './styled';
+import { Content, Input, InputBox, Page, Result } from './styled';
+import Pagination from './pagination';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,36 +17,11 @@ const Wrapper = styled.div`
 `;
 
 const SearchPage = () => {
-  // const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false);
+  const [wholeData, setWholeData] = useState([]);
+  const [curData, setCurData] = useState([]);
+  const [showData, setShowData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState('');
-  const [movies, setMovies] = useState([]);
-
-  // useEffect(() => {
-  //   const getSearchData = async () => {
-  //     try {
-  //       const { data: result } = await axios.get(
-  //         `http://127.0.0.1:8000/movie/?search_movie=${search}`
-  //       );
-  //       setData(result);
-  //       setLoading(false);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   setLoading(true);
-  //   getSearchData();
-  // }, [search]);
-
-  // console.log(data);
-
-  const getApi = async () => {
-    const res = await fetch('http://127.0.0.1:8000/movie/');
-
-    return await res.json();
-  };
-
-  const { data, isLoading: loading } = useQuery(['moviedata'], getApi);
 
   const handleSearch = e => {
     const {
@@ -56,19 +32,44 @@ const SearchPage = () => {
   };
 
   const searchMovie = () => {
-    const filterData = data.filter(m => m.title_kor.includes(search));
-    setMovies(
-      filterData.length === 0 // 검색 결과 없을 때 기존 페이지의 영화 리스트 보여줌
-        ? data
+    const filterData = wholeData.filter(movie =>
+      movie.title_kor.includes(search)
+    );
+    console.log(filterData.length);
+    setShowData(
+      filterData === 0
+        ? curData
         : search === '' // 검색어 입력 안했을 때 기존 페이지의 영화 리스트 보여줌
-        ? data
-        : filterData
+        ? curData
+        : filterData && filterData
     );
   };
 
   useEffect(() => {
+    const getSearchData = async () => {
+      try {
+        const { data: result } = await axios.get(`http://127.0.0.1:8000/movie`);
+        setWholeData(result);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    setLoading(true);
+    getSearchData();
+  }, []);
+
+  useEffect(() => {
     searchMovie();
   }, [search]);
+
+  // const getApi = async () => {
+  //   const res = await fetch('http://127.0.0.1:8000/movie/');
+
+  //   return await res.json();
+  // };
+
+  // const { data, isLoading: loading } = useQuery(['moviedata'], getApi);
 
   return (
     <Wrapper>
@@ -80,7 +81,7 @@ const SearchPage = () => {
             <Input value={search} onChange={handleSearch} />
           </InputBox>
           <Result>
-            {movies.map(movie => (
+            {showData.map(movie => (
               <div key={movie.id}>{movie.title_kor}</div>
             ))}
           </Result>
