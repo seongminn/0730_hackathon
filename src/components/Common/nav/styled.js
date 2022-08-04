@@ -41,8 +41,12 @@ export const UserBox = styled.div`
 
 export const SignIn = styled.p`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+
+  padding: 10px 16px;
   cursor: pointer;
 `;
 

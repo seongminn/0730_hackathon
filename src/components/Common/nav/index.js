@@ -69,7 +69,7 @@ const Nav = () => {
         <Link to="/search">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
-            style={{ fontSize: 16, color: 'white' }}
+            style={{ fontSize: 20, color: 'white' }}
           />
         </Link>
 
