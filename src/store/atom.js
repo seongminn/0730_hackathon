@@ -6,6 +6,7 @@ const { persistAtom } = recoilPersist();
 export const loginState = atom({
   key: 'login',
   default: { isLogin: false, accessToken: '' },
+  effects_UNSTABLE: [persistAtom],
 });
 
 // 현재는 로그인하면 토큰이랑 username, nickname 다 넘겨줌
