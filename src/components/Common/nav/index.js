@@ -7,10 +7,10 @@ import {
 
 import { Wrapper, LogoBox, Title, UserBox, SignIn, Menu } from './styled';
 
-import SearchInput from './input';
+// import SearchInput from './input';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { loginState, tokenState } from '../../../atom';
+import { useRecoilState } from 'recoil';
+import { tokenState } from '../../../atom';
 import { useEffect, useState } from 'react';
 
 const Nav = () => {
@@ -19,9 +19,9 @@ const Nav = () => {
   const [scroll, setScroll] = useState(0);
   const [storage, setStorage] = useState(false);
 
-  const onClickMenu = () => {
-    navigate('/allMovies');
-  };
+  // const onClickMenu = () => {
+  //   navigate('/allMovies');
+  // };
 
   const onClickLogout = () => {
     window.localStorage.removeItem('loginId');
