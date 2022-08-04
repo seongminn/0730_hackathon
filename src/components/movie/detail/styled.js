@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import back from '../../../assets/img/detailback.jpg';
 import '../../../assets/fonts/fonts.css';
 
+export const Wrapper = styled.div``;
+
 export const ConDiv = styled.div`
   width: 100%;
   min-width: 512px;
@@ -9,7 +11,14 @@ export const ConDiv = styled.div`
   // opacity: 0.4;
   margin: 0 auto;
   display: flex;
-  background-image: url(${back});
+
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 80%,
+      rgba(0, 0, 0, 1)
+    ),
+    url(${back});
+  /* background-image: url(${back}); */
   background-size: cover;
 `;
 export const MainDiv = styled.div`
@@ -133,4 +142,26 @@ export const StaffItemName = styled.div`
   text-align: center;
   font-size: 1rem;
   color: #b3b3b3;
+`;
+
+export const ArrowBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+  background-color: #be123c;
+  border-radius: 50%;
+  font-size: 24px;
+  position: sticky;
+  bottom: 3rem;
+  box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+  cursor: pointer;
+  /* left: 50%; */
+  /* transform: translateX(50%); */
+`;
+
+export const CommentWrapper = styled.div`
+  height: 100vh;
 `;
