@@ -10,7 +10,7 @@ import styled from 'styled-components';
 // import { datas, getMovie } from '../api';
 import MainSlider from './slider';
 import MainPoster from './poster';
-import Loading from '../loading';
+// import Loading from '../loading';
 import Footer from './footer';
 
 const Wrapper = styled.div`
@@ -24,17 +24,17 @@ const Home = () => {
   // const loading = false;
 
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getAllData() {
-      setLoading(true);
+      // setLoading(true);
       try {
         const { data: result } = await axios.get(
           'http://127.0.0.1:8000/movie/'
         );
         setData(result);
-        setLoading(false);
+        // setLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -44,20 +44,20 @@ const Home = () => {
 
   return (
     <>
-      {loading ? (
+      {/* {loading ? (
         <>
           <Loading />
           <Wrapper />
         </>
-      ) : (
-        <>
-          <Wrapper>
-            <MainPoster />
-            <MainSlider data={data} />
-          </Wrapper>
-          <Footer />
-        </>
-      )}
+      ) : ( */}
+      <>
+        <Wrapper>
+          <MainPoster />
+          <MainSlider data={data} />
+        </Wrapper>
+        <Footer />
+      </>
+      {/* )} */}
     </>
   );
 };
