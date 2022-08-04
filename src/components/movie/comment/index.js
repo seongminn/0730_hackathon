@@ -10,17 +10,17 @@ import {
 } from './styled';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { tokenState } from './../../../atom';
+import { loginState } from '../../../store/atom';
 
 function Comment({ data }) {
   const { id } = useParams();
   const [input, setInput] = useState();
   const [commentlist, setCommentList] = useState(data.comments);
-  const token = useRecoilValue(tokenState);
+  const login = useRecoilValue(loginState);
 
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: token.token,
+    Authorization: login.accessToken,
   };
 
   const handleInput = e => {
@@ -43,13 +43,11 @@ function Comment({ data }) {
       const prevComment = [...comment];
 
       const result = [...prevComment, input];
-      console.log(result);
       return result;
     });
   }
 
   const postComment = () => {
-    console.log(token);
     try {
       axios.post(
         `http://127.0.0.1:8000/movie/comment/`,

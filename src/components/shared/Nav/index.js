@@ -6,18 +6,18 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { Wrapper, LogoBox, Title, UserBox, SignIn, Menu } from './styled';
+import PATH from '../../../constants/path';
 
 // import SearchInput from './input';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { tokenState } from '../../../atom';
+import { loginState } from '../../../store/atom';
 import { useEffect, useState } from 'react';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [token, setToken] = useRecoilState(tokenState);
+  const [login, setLogin] = useRecoilState(loginState);
   const [scroll, setScroll] = useState(0);
-  const [storage, setStorage] = useState(false);
 
   // const onClickMenu = () => {
   //   navigate('/allMovies');
@@ -25,7 +25,7 @@ const Nav = () => {
 
   const onClickLogout = () => {
     window.localStorage.removeItem('loginId');
-    setToken({});
+    setLogin({ isLogin: false, accessToken: '' });
 
     navigate('/');
   };
@@ -38,9 +38,9 @@ const Nav = () => {
     window.addEventListener('scroll', onScroll);
   });
 
-  useEffect(() => {
-    setStorage(localStorage.getItem('loginId') && true);
-  }, [token]);
+  const onClickMenu = () => {
+    navigate(`${PATH.ALLMOVIES}`);
+  };
 
   return (
     <Wrapper visiblity={scroll > 80}>
@@ -50,16 +50,10 @@ const Nav = () => {
           <Title>2럴수가</Title>
         </LogoBox>
       </Link>
-
       <UserBox>
         <>
-          {storage ? (
-            <SignIn
-              onClick={() => onClickLogout()}
-              style={storage || { display: 'none' }}
-            >
-              Sign out
-            </SignIn>
+          {login.isLogin ? (
+            <SignIn onClick={() => onClickLogout()}>Sign out</SignIn>
           ) : (
             <Link to="/login">
               <SignIn>Sign In</SignIn>
@@ -73,7 +67,6 @@ const Nav = () => {
           />
         </Link>
 
-        {/* <SignIn>{checked ? 'Sign out' : 'Sign in'}</SignIn> */}
         <Menu>
           <FontAwesomeIcon
             icon={faBars}

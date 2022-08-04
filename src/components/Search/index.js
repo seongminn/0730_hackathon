@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 // import { useRecoilValue } from 'recoil';
 // import { searchState } from '../../atom';
-import Loading from '../loading';
+import Loading from '../shared/Loading';
 // import Search from './result';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';

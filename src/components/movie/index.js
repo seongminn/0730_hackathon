@@ -18,6 +18,7 @@ function DetailPage() {
           `http://127.0.0.1:8000/movie/${id}`
         );
         setData(result);
+        console.log(data);
         setLoading(false);
       } catch (err) {
         console.log(err);

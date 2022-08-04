@@ -10,7 +10,8 @@ import styled from 'styled-components';
 // import { datas, getMovie } from '../api';
 import MainSlider from './slider';
 import MainPoster from './poster';
-import Loading from '../loading';
+import Loading from './../shared/Loading';
+
 import Footer from './footer';
 import { useQuery } from 'react-query';
 import axios from 'axios';
@@ -63,9 +64,6 @@ const Home = () => {
         <>
           <Wrapper>
             <MainPoster />
-
-            <MainSlider data={data ? data.data : []} />
-            <MainSlider data={data ? data.data : []} />
             <MainSlider data={data ? data.data : []} />
           </Wrapper>
           <Footer />
