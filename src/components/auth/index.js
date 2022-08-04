@@ -4,6 +4,7 @@ import Login from './login';
 import Register from './register';
 
 const Wrapper = styled.div`
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: flex-start;
@@ -22,7 +23,6 @@ const Wrapper = styled.div`
 const AuthPage = () => {
   const [auth, setAuth] = useState(true);
 
-  console.log(auth);
   return (
     <Wrapper>
       {auth ? <Login setAuth={setAuth} /> : <Register setAuth={setAuth} />}

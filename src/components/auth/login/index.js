@@ -8,7 +8,6 @@ import {
   Button,
   SocialBox,
   SocialBtn,
-  LineBox,
   BtnText,
   Icon,
   Line,
@@ -21,7 +20,6 @@ import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 import authAPI from './../../../apis/authAPI';
-import PATH from './../../../constants/path';
 import { useSetRecoilState } from 'recoil';
 
 const Login = ({ setAuth }) => {
@@ -39,56 +37,7 @@ const Login = ({ setAuth }) => {
     setInputPw(e.target.value);
   };
 
-  // async function postLoginData(e) {
-  //   e.preventDefault();
-  //   try {
-  //     await axios
-  //       .post(
-  //         'http://127.0.0.1:8000/account/login',
-  //         { username: inputId, password: inputPw },
-  //         {
-  //           withCredentials: true,
-  //         }
-  //       )
-  //       .then(res => {
-  //         console.log(res.data);
-  //         alert('로그인에 성공하였습니다.');
-  //         navigate(-1);
-
-  //         window.localStorage.setItem('loginId', res.data.token);
-
-  //         setToken(res.data);
-  //       });
-  //   } catch (err) {
-  //     console.log(err);
-  const onClickLogin = () => {
-    postLoginData();
-  };
-
-  const onKeyPress = e => {
-    e.key === 'Enter' && onClickLogin();
-  };
-
   async function postLoginData(e) {
-    // try {
-    //   await axios
-    //     .post(
-    //       'http://127.0.0.1:8000/account/login',
-    //       { username: inputId, password: inputPw },
-    //       {
-    //         withCredentials: true,
-    //       }
-    //     )
-    //     .then(res => {
-    //       console.log(res.data);
-    //       window.localStorage.setItem('loginId', res.data.token);
-
-    //       setLogin(res.data);
-    //     });
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    // setInput({ username: inputId, password: inputPw });
     try {
       e.preventDefault();
       const input = { username: inputId, password: inputPw };
@@ -100,11 +49,6 @@ const Login = ({ setAuth }) => {
       console.log('로그인 오류');
     }
   }
-
-  const changeAuth = () => {
-    setAuth(false);
-    console.log('to signup');
-  };
 
   return (
     <Wrapper>
@@ -133,7 +77,7 @@ const Login = ({ setAuth }) => {
           <BtnText>Continue with GitHub</BtnText>
         </SocialBtn>
       </SocialBox>
-      <ChangeAuth onClick={changeAuth}>NOT A MEMBER YET?</ChangeAuth>
+      <ChangeAuth onClick={() => setAuth(false)}>NOT A MEMBER YET?</ChangeAuth>
     </Wrapper>
   );
 };

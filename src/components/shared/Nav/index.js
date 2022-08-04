@@ -38,9 +38,7 @@ const Nav = () => {
     window.addEventListener('scroll', onScroll);
   });
 
-  const onClickMenu = () => {
-    navigate(`${PATH.ALLMOVIES}`);
-  };
+  console.log(PATH.SEARCH);
 
   return (
     <Wrapper visiblity={scroll > 80}>
@@ -60,7 +58,7 @@ const Nav = () => {
             </Link>
           )}
         </>
-        <Link to="/search">
+        <Link to={`${PATH.SEARCH}`}>
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
             style={{ fontSize: 20, color: 'white' }}

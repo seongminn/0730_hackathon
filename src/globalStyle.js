@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     font-family: "BMHANNAAir", sans-serif;
     font-size: 1.2rem;
-		/* overflow: overlay; */
+		/* overflow: overflow; */
 		overflow-x: hidden;
   }
 `;

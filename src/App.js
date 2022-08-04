@@ -8,9 +8,9 @@ import PATH from './constants/path';
 
 import Nav from './components/shared/Nav';
 import Home from './components/main/index';
-import Login from './components/auth/login/index';
 import Detail from './components/movie/detail';
 import SearchPage from './components/search';
+import AuthPage from './components/auth';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
       <MainContainer>
         <Routes>
           <Route path={PATH.MAIN} element={<Home />} />
-          <Route path={PATH.LOGIN} element={<Login />} />
+          <Route path={PATH.LOGIN} element={<AuthPage />} />
           <Route exact path="/search" element={<SearchPage />} />
           <Route path={`${PATH.DETAIL}/:id`} element={<Detail />} />
           {/* <Route path="/allMovies" element={<AllMoviePage />} /> */}

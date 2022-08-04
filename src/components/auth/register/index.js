@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import {
   Wrapper,
@@ -9,13 +7,7 @@ import {
   Form,
   InputName,
   Input,
-  LineBox,
-  Line,
   Button,
-  SocialBox,
-  Icon,
-  BtnText,
-  SocialBtn,
   ChangeAuth,
 } from './styled';
 
@@ -79,7 +71,9 @@ const Register = ({ setAuth }) => {
         <Button>Log In</Button>
       </Form>
 
-      <ChangeAuth onClick={setAuth}>ALREADY HAVE AN ACCOUNT?</ChangeAuth>
+      <ChangeAuth onClick={() => setAuth(true)}>
+        ALREADY HAVE AN ACCOUNT?
+      </ChangeAuth>
     </Wrapper>
   );
 };
