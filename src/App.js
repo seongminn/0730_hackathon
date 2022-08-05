@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Nav />
+      {/* <Nav /> */}
       <MainContainer>
         <Routes>
           <Route path={PATH.MAIN} element={<Home />} />

@@ -31,6 +31,16 @@ import { useRecoilValue } from 'recoil';
 import { loginState } from '../../../store/atom';
 import { useNavigate, useParams } from 'react-router-dom';
 import detailAPI from './../../../apis/detailAPI';
+import {
+  CommentWrapper,
+  Container,
+  DetailWrapper,
+  Header,
+  InfoSection,
+  InfoWrapper,
+  PosterImg,
+  StaffWrapper,
+} from './styled';
 
 function Detail() {
   // const rating_sum =
@@ -71,7 +81,20 @@ function Detail() {
   // }
 
   return (
-    <div></div>
+    <Container>
+      <Header>
+        <h2>{data.title_kor}</h2>
+        <h5>{data.title_eng}</h5>
+      </Header>
+      <DetailWrapper>
+        <InfoWrapper>
+          <PosterImg />
+          <InfoSection></InfoSection>
+        </InfoWrapper>
+        <StaffWrapper></StaffWrapper>
+      </DetailWrapper>
+      <CommentWrapper></CommentWrapper>
+    </Container>
     // <ConDiv>
     //   <MainDiv>
     //     <MainConDiv>
