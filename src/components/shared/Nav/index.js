@@ -38,8 +38,6 @@ const Nav = () => {
     window.addEventListener('scroll', onScroll);
   });
 
-  console.log(PATH.SEARCH);
-
   return (
     <Wrapper visiblity={scroll > 80}>
       <Link to="/">

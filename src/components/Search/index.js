@@ -93,7 +93,11 @@ const SearchPage = () => {
       ) : (
         <Content>
           <InputBox>
-            <Input value={search} onChange={handleSearch} />
+            <Input
+              value={search}
+              onChange={handleSearch}
+              placeholder="제목으로 영화를 검색해보세요."
+            />
           </InputBox>
           <Result>
             {showData.map(movie => (

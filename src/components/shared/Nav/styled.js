@@ -26,10 +26,11 @@ export const LogoBox = styled.div`
 `;
 
 export const Title = styled.h2`
+  font-family: 'BMHANNApro', sans-serif;
+
   font-weight: bold;
   padding-left: 18px;
-
-  font-family: 'BMHANNApro', sans-serif;
+  white-space: nowrap;
 `;
 
 export const UserBox = styled.div`
@@ -45,8 +46,9 @@ export const SignIn = styled.p`
   color: #fff;
   border: 1px solid #fff;
   border-radius: 4px;
-
   padding: 10px 16px;
+  white-space: nowrap;
+
   cursor: pointer;
 `;
 

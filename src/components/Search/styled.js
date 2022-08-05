@@ -24,6 +24,10 @@ export const Input = styled.input`
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
+
+  &::placeholder {
+    font-family: 'BMHANNAAir';
+  }
 `;
 
 export const Result = styled.div`
