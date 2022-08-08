@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Register.css';
-import { useRecoilState } from 'recoil';
-import { registerState } from '../../../atom';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const Register = () => {
+import {
+  Wrapper,
+  Title,
+  Form,
+  InputName,
+  Input,
+  Button,
+  ChangeAuth,
+} from './styled';
+
+const Register = ({ setAuth }) => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
   const [inputNickname, setInputNickname] = useState('');
   const [inputLocation, setInputLocation] = useState('');
-  const [register, setRegister] = useRecoilState(registerState);
 
   const handleInputId = e => {
     setInputId(e.target.value);
@@ -28,7 +33,8 @@ const Register = () => {
     setInputLocation(event.target.value);
   };
 
-  async function postLoginData() {
+  async function postAccountData(e) {
+    e.preventDefault();
     try {
       await axios.post('http://127.0.0.1:8000/account/signup', {
         username: inputId,
@@ -36,67 +42,39 @@ const Register = () => {
         nickname: inputNickname,
         location: inputLocation,
       });
+      alert('회원가입에 성공하였습니다!');
     } catch (err) {
       console.log(err);
     }
   }
 
   return (
-    <div className="container">
-      <div className="login_box">
-        <p className="title">Register</p>
-        <div className="login_type_area">
-          <div className="id_box">
-            <p htmlFor="input_id">Username</p>
-            <input
-              type="text"
-              name="input_id"
-              placeholder="사용할 Username을 입력해주세요"
-              value={inputId}
-              onChange={handleInputId}
-            />
-          </div>
-          <div className="pw_box">
-            <p htmlFor="input_pw">Password</p>
-            <input
-              type="password"
-              name="input_pw"
-              placeholder="사용할 Password를 입력해주세요"
-              value={inputPw}
-              onChange={handleInputPw}
-            />
-          </div>
-          <div className="pw_box">
-            <p htmlFor="input_pw">Nickname</p>
-            <input
-              type="text"
-              name="input_nickname"
-              placeholder="사용할 Nickname를 입력해주세요"
-              value={inputNickname}
-              onChange={handleInputNickname}
-            />
-          </div>
-          <div className="pw_box">
-            <p htmlFor="input_pw">Location</p>
-            <input
-              type="text"
-              name="input_location"
-              placeholder="사용할 Location를 입력해주세요"
-              value={inputLocation}
-              onChange={handleInputLocation}
-            />
-          </div>
-        </div>
-        <button className="register_btn" onClick={postLoginData} type="button">
-          Sign Up
-        </button>
-        <Link to="/">
-          <p className="login_link">
-            <span>이미 가입한 기존사용자는 </span>Log In
-          </p>
-        </Link>
-      </div>
-    </div>
+    <Wrapper>
+      <Title>Sign Up</Title>
+      <Form onSubmit={e => postAccountData(e)}>
+        <InputName>username</InputName>
+        <Input type="text" value={inputId} onChange={handleInputId} />
+        <InputName>password</InputName>
+        <Input type="password" value={inputPw} onChange={handleInputPw} />
+        <InputName>nickname</InputName>
+        <Input
+          type="text"
+          value={inputNickname}
+          onChange={handleInputNickname}
+        />
+        <InputName>location</InputName>
+        <Input
+          type="text"
+          value={inputLocation}
+          onChange={handleInputLocation}
+        />
+        <Button>Log In</Button>
+      </Form>
+
+      <ChangeAuth onClick={() => setAuth(true)}>
+        ALREADY HAVE AN ACCOUNT?
+      </ChangeAuth>
+    </Wrapper>
   );
 };
 

@@ -1,12 +1,13 @@
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 
-const { persistAtom } = recoilPersist();
+const { persistAtom: loginPersist } = recoilPersist();
+const { persistAtom: userPersist } = recoilPersist();
 
 export const loginState = atom({
   key: 'login',
   default: { isLogin: false, accessToken: '' },
-  effects_UNSTABLE: [persistAtom],
+  effects_UNSTABLE: [loginPersist],
 });
 
 // 현재는 로그인하면 토큰이랑 username, nickname 다 넘겨줌
@@ -16,5 +17,5 @@ export const userState = atom({
   default: {
     nickname: '',
   },
-  effects_UNSTABLE: [persistAtom],
+  effects_UNSTABLE: [userPersist],
 });

@@ -2,37 +2,31 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 100%;
-`;
-
-export const Banner = styled.div`
-  position: absolute;
-  width: 100%;
   height: 90vh;
 
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
     url(${props => props.bgPhoto});
   /* background-image: url(${props => props.bgPhoto}); */
   background-size: cover;
+  background-position: top center;
 
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  transition: all 1s ease-in-out;
 `;
 
 export const Content = styled.div`
+  height: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 35px;
+  margin: auto 0;
 `;
 
 export const DesBox = styled.div`
-  position: absolute;
-  /* top: calc(50% - ${props => props.height / 2}px); */
-  top: 50%;
-  padding-left: 35px;
   width: 400px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 16px;
 `;
 

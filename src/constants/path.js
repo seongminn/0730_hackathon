@@ -5,6 +5,8 @@ const PATH = {
   SIGNUP: '/signup',
   ALLMOVIES: '/allMovies',
   DETAIL: '/movie',
+  SEARCH: '/search',
+  MY: '/my',
 };
 
 export default PATH;

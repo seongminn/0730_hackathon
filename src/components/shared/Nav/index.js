@@ -1,50 +1,76 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClapperboard, faBars } from '@fortawesome/free-solid-svg-icons';
+import {
+  faClapperboard,
+  faBars,
+  faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { Wrapper, LogoBox, Title, UserBox, SignIn, Menu } from './styled';
 import PATH from '../../../constants/path';
 
+// import SearchInput from './input';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { loginState } from '../../../store/atom';
-
-import SearchInput from '../SearchInput/index';
+import { useEffect, useState } from 'react';
 
 const Nav = () => {
   const navigate = useNavigate();
-  // const setLogin = useSetRecoilState(loginState);
+  const [login, setLogin] = useRecoilState(loginState);
+  const [scroll, setScroll] = useState(0);
 
-  const onClickMenu = () => {
-    navigate(`${PATH.ALLMOVIES}`);
+  // const onClickMenu = () => {
+  //   navigate('/allMovies');
+  // };
+
+  const onClickLogout = () => {
+    window.localStorage.removeItem('loginId');
+    setLogin({ isLogin: false, accessToken: '' });
+
+    navigate('/');
   };
 
-  // const onClickLogout = () => {
-  //   // window.localStorage.removeItem('loginId');
-  //   setLogin({ isLogin: false, accessToken: '' });
-  //   window.location.reload();
-  // };
+  const onScroll = () => {
+    setScroll(window.scrollY || document.documentElement.scrollTop);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+  });
+
   return (
-    <Wrapper>
-      {/* <Link to="/">
+    <Wrapper visiblity={scroll > 80}>
+      <Link to="/">
         <LogoBox>
           <FontAwesomeIcon icon={faClapperboard} style={{ fontSize: 32 }} />
           <Title>2럴수가</Title>
         </LogoBox>
       </Link>
-      <SearchInput />
       <UserBox>
-        <SignIn onClick={() => onClickLogout()}>Sign out</SignIn> */}
-      {/* <SignIn>{checked ? 'Sign out' : 'Sign in'}</SignIn> */}
-      {/* <Menu>
-          <Link to="/allMovies">
+        <>
+          {login.isLogin ? (
+            <SignIn onClick={() => onClickLogout()}>Sign out</SignIn>
+          ) : (
+            <Link to="/login">
+              <SignIn>Sign In</SignIn>
+            </Link>
+          )}
+        </>
+        <Link to={`${PATH.SEARCH}`}>
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            style={{ fontSize: 20, color: 'white' }}
+          />
+        </Link>
+        <Link to={`${PATH.MY}`}>
+          <Menu>
             <FontAwesomeIcon
               icon={faBars}
               style={{ fontSize: 16, color: 'white' }}
-              onClick={onClickMenu}
             />
-          </Link>
-        </Menu>
-      </UserBox> */}
+          </Menu>
+        </Link>
+      </UserBox>
     </Wrapper>
   );
 };
