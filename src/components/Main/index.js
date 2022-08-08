@@ -37,7 +37,7 @@ const Home = () => {
         <>
           <Wrapper>
             <MainPoster />
-            <MainSlider data={data ? data.data : []} />
+            <MainSlider data={data.data} />
           </Wrapper>
           <Footer />
         </>

@@ -11,6 +11,7 @@ import Home from './components/main/index';
 import Detail from './components/movie/detail';
 import SearchPage from './components/search';
 import AuthPage from './components/auth';
+import My from './components/mypage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path={PATH.MAIN} element={<Home />} />
           <Route path={PATH.LOGIN} element={<AuthPage />} />
+          <Route path={PATH.MY} element={<My />} />
           <Route exact path="/search" element={<SearchPage />} />
           <Route path={`${PATH.DETAIL}/:id`} element={<Detail />} />
           {/* <Route path="/allMovies" element={<AllMoviePage />} /> */}
