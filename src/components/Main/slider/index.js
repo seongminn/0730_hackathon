@@ -67,7 +67,7 @@ const MainSlider = ({ data }) => {
         onExitComplete={toggleLeaving}
       >
         <Btn
-          style={{ left: 20, top: '50%' }}
+          style={{ left: 20 }}
           key="left"
           onClick={() => increaseIndex('prev')}
         >
@@ -93,7 +93,7 @@ const MainSlider = ({ data }) => {
           ))}
         </Row>
         <Btn
-          style={{ right: 20, top: '50%' }}
+          style={{ right: 20 }}
           key="right"
           onClick={() => increaseIndex('next')}
         >

@@ -28,6 +28,7 @@ export const InputName = styled.p`
 export const Input = styled.input`
   width: 100%;
   padding: 10px 20px;
+  padding-left: 0;
   border: none;
   border-bottom: 1px solid #fff;
   border-top-left-radius: 5px;
@@ -42,6 +43,10 @@ export const Input = styled.input`
     font-family: 'Noto Sans Kr';
     color: #fff;
     letter-spacing: 2px;
+  }
+
+  &::placeholder {
+    font-family: 'BMHANNAAir';
   }
 `;
 
@@ -64,22 +69,51 @@ export const Input = styled.input`
 //   }
 // `;
 
-export const Line = styled.hr`
-  width: 100%;
-  border: none;
-  color: #444;
-  border-top: 1px solid #444;
-  overflow: visible;
-  text-align: center;
-  margin: 16px 0;
+// export const Line = styled.hr`
+//   width: 100%;
+//   border: none;
+//   color: #444;
+//   border-top: 1px solid #444;
+//   overflow: visible;
+//   text-align: center;
+//   margin: 16px 0;
+
+//   &::after {
+//     content: 'or';
+//     position: relative;
+//     top: -11px;
+
+//     background-color: transparent;
+//     padding: 0 10px;
+//   }
+// `;
+
+export const LineBox = styled.div`
+  position: relative;
+  color: #babcbd;
+  margin: 0 auto;
+  margin-bottom: 20px;
+
+  &::before {
+    content: '';
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    transform: translate(-100%, 50%);
+    background-color: #babcbd;
+  }
 
   &::after {
-    content: 'or';
-    position: relative;
-    top: -11px;
-
-    background-color: transparent;
-    padding: 0 10px;
+    content: '';
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, 50%);
+    background-color: #babcbd;
   }
 `;
 

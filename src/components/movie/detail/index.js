@@ -42,7 +42,7 @@ import detailAPI from './../../../apis/detailAPI';
 
 function Detail() {
   const login = useRecoilValue(loginState);
-  const [direction, setDirection] = useState(false);
+  const [direction, setDirection] = useState(true);
   const [rating, setRating] = useState(0);
   const navigate = useNavigate();
   const detailRef = useRef(null);
