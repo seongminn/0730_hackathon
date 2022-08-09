@@ -12,6 +12,7 @@ import {
   Icon,
   Line,
   ChangeAuth,
+  LineBox,
 } from './styled';
 import { loginState, userState } from '../../../store/atom';
 
@@ -55,13 +56,23 @@ const Login = ({ setAuth }) => {
       <Title>Log In</Title>
       <Form onSubmit={e => postLoginData(e)}>
         <InputName>username</InputName>
-        <Input type="text" value={inputId} onChange={handleInputId} />
+        <Input
+          type="text"
+          value={inputId}
+          onChange={handleInputId}
+          placeholder="아이디를 입력해주세요."
+        />
         <InputName>password</InputName>
-        <Input type="password" value={inputPw} onChange={handleInputPw} />
+        <Input
+          type="password"
+          value={inputPw}
+          onChange={handleInputPw}
+          placeholder="비밀번호를 입력해주세요."
+        />
         <Button>Log In</Button>
       </Form>
 
-      <Line />
+      <LineBox>or</LineBox>
 
       <SocialBox>
         <SocialBtn style={{ background: '#DE4C39' }}>

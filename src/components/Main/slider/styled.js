@@ -27,6 +27,8 @@ export const Btn = styled.button`
   border-color: transparent;
   z-index: 50;
   outline: none;
+  top: 50%;
+  transform: translateY(-50%);
 
   cursor: pointer;
 `;
