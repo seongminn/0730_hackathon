@@ -21,7 +21,7 @@ function App() {
       <MainContainer>
         <Routes>
           <Route path={PATH.MAIN} element={<Home />} />
-          <Route path={PATH.LOGIN} element={<AuthPage />} />
+          <Route path={PATH.LOGIN} element={<AuthPage />}></Route>
           <Route path={PATH.MY} element={<My />} />
           <Route exact path="/search" element={<SearchPage />} />
           <Route path={`${PATH.DETAIL}/:id`} element={<Detail />} />

@@ -6,7 +6,7 @@ const authAPI = {
   login: async ({ input }) => {
     try {
       const { data } = await axios.post(
-        `${PATH.BASE_URL}/account${PATH.LOGIN}`,
+        `${PATH.BASE_URL}/accounts${PATH.LOGIN}`,
         input
       );
       return data;
@@ -17,7 +17,7 @@ const authAPI = {
   signup: async ({ input }) => {
     try {
       const { status } = await axios.post(
-        `${PATH.BASE_URL}/account${PATH.SIGNUP}`,
+        `${PATH.BASE_URL}/accounts${PATH.SIGNUP}`,
         input
       );
       return status;
