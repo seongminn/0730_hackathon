@@ -5,7 +5,6 @@ import {
   faTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
-import { Link } from 'react-router-dom';
 import { Wrapper, Socials, Links, Copy } from './styled';
 
 const Footer = () => {

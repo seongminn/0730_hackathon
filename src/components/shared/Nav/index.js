@@ -62,13 +62,14 @@ const Nav = () => {
             style={{ fontSize: 20, color: 'white' }}
           />
         </Link>
-
-        <Menu>
-          <FontAwesomeIcon
-            icon={faBars}
-            style={{ fontSize: 16, color: 'white' }}
-          />
-        </Menu>
+        <Link to={`${PATH.MY}`}>
+          <Menu>
+            <FontAwesomeIcon
+              icon={faBars}
+              style={{ fontSize: 16, color: 'white' }}
+            />
+          </Menu>
+        </Link>
       </UserBox>
     </Wrapper>
   );

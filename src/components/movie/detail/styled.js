@@ -1,49 +1,6 @@
 import styled from 'styled-components';
 import back from '../../../assets/img/detailback.jpg';
 import '../../../assets/fonts/fonts.css';
-import COLOR from './../../../constants/color';
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-export const Header = styled.div`
-  h2 {
-    display: inline;
-    font-size: 2rem;
-    font-family: 'BMHANNAPro', sans-serif;
-    padding-bottom: 1.5rem;
-  }
-  h5 {
-    display: inline;
-    font-size: 1.5rem;
-    color: ${COLOR['GRAY-200']};
-    font-family: 'BMHANNAAir', sans-serif;
-  }
-`;
-export const DetailWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-export const InfoWrapper = styled.div`
-  flex: 1;
-`;
-export const PosterImg = styled.img`
-  width: 300px;
-  height: 500px;
-  object-fit: cover;
-`;
-export const InfoSection = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-export const StaffWrapper = styled.div`
-  flex: 1;
-`;
-export const CommentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 export const Wrapper = styled.div``;
 
