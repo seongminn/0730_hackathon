@@ -10,7 +10,6 @@ import {
   SocialBtn,
   BtnText,
   Icon,
-  Line,
   ChangeAuth,
   LineBox,
 } from './styled';
