@@ -17,6 +17,8 @@ import {
   UserText,
   Wrapper,
 } from './styled';
+import NotLoggedIn from '../shared/notLoggedIn';
+import { EditOutlined } from '@ant-design/icons';
 
 const My = () => {
   // true일 경우 내가 작성한 댓글, false일 경우 북마크한 댓글
@@ -32,11 +34,13 @@ const My = () => {
   return (
     <Wrapper>
       {!login.isLogin ? (
-        '로그인이 필요합니다. 로그인 하시겠습니까?'
+        // '로그인이 필요합니다. 로그인 하시겠습니까?'
+        <NotLoggedIn />
       ) : (
         <>
           <Top>
             <ImgBox />
+            <EditOutlined />
           </Top>
           <Bottom>
             <Contents>

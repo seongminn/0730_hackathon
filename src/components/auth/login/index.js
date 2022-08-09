@@ -10,7 +10,6 @@ import {
   SocialBtn,
   BtnText,
   Icon,
-  Line,
   ChangeAuth,
   LineBox,
 } from './styled';
@@ -53,14 +52,14 @@ const Login = ({ setAuth }) => {
 
   return (
     <Wrapper>
-      <Title>Log In</Title>
+      <Title>로그인</Title>
       <Form onSubmit={e => postLoginData(e)}>
-        <InputName>username</InputName>
+        <InputName>email</InputName>
         <Input
           type="text"
           value={inputId}
           onChange={handleInputId}
-          placeholder="아이디를 입력해주세요."
+          placeholder="이메일 주소를 입력해주세요."
         />
         <InputName>password</InputName>
         <Input

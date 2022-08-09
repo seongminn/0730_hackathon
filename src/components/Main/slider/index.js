@@ -1,9 +1,4 @@
-import {
-  faAngleLeft,
-  faAngleRight,
-  faCaretLeft,
-  faCaretRight,
-} from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';

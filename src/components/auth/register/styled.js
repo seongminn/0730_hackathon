@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   height: 70vh;
-
+  max-width: 520px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,12 +21,14 @@ export const Title = styled.h2`
 export const Form = styled.form``;
 
 export const InputName = styled.p`
+  /* font-size: 16px; */
   color: #ff8787;
 `;
 
 export const Input = styled.input`
   width: 100%;
   padding: 10px 20px;
+  padding-left: 0;
   border: none;
   border-bottom: 1px solid #fff;
   border-top-left-radius: 5px;
@@ -41,6 +43,10 @@ export const Input = styled.input`
     font-family: 'Noto Sans Kr';
     color: #fff;
     letter-spacing: 2px;
+  }
+
+  &::placeholder {
+    font-family: 'BMHANNAAir';
   }
 `;
 
@@ -63,23 +69,9 @@ export const Input = styled.input`
 //   }
 // `;
 
-export const Line = styled.hr`
-  width: 100%;
-  border: none;
-  color: #444;
-  border-top: 1px solid #444;
-  overflow: visible;
-  text-align: center;
-  margin: 16px 0;
-
-  &::after {
-    content: 'or';
-    position: relative;
-    top: -11px;
-
-    background-color: transparent;
-    padding: 0 10px;
-  }
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 12px;
 `;
 
 export const Button = styled.button`
