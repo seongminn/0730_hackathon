@@ -7,9 +7,9 @@ import MainContainer from './components/shared/MainContainer';
 import PATH from './constants/path';
 
 import Nav from './components/shared/Nav';
-import Home from './components/main/index';
+import Home from './components/Main/index';
 import Detail from './components/movie/detail';
-import SearchPage from './components/search';
+import SearchPage from './components/Search/index';
 import AuthPage from './components/auth';
 import My from './components/mypage';
 
@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      {/* <Nav /> */}
+      <Nav />
       <MainContainer>
         <Routes>
           <Route path={PATH.MAIN} element={<Home />} />
