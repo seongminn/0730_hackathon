@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const CommentWrapper = styled.div`
+  height: 100vh;
+  display: flex;
+`;
 // Comment
 export const CommentConDiv = styled.div`
   width: 100%;

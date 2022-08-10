@@ -13,6 +13,12 @@ export const Container = styled.div`
     width: 100%;
   }
 `;
+export const DetailWrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export const Header = styled.div`
   width: 100%;
   display: flex;
@@ -29,8 +35,7 @@ export const HeaderEng = styled.div`
   display: flex;
   align-items: flex-end;
 `;
-export const DetailWrapper = styled.div`
-  height: 100vh;
+export const Wrapper = styled.div`
   display: flex;
 `;
 export const Poster = styled.img`
@@ -64,9 +69,36 @@ export const Summary = styled.div`
   height: 150px;
   overflow-y: auto;
 `;
-export const CommentWrapper = styled.div`
-  height: 100vh;
+export const Staff = styled.div`
+  width: 100%;
+  height: 150px;
+  overflow-x: auto;
+  background: ${COLOR.YELLOW};
   display: flex;
+`;
+export const StaffItem = styled.div`
+  width: 100px;
+  height: 100%;
+`;
+export const StaffImg = styled.img`
+  width: 100%;
+  height: 100%;
+  src: ${props => props.src};
+  object-fit: cover;
+  position: relative;
+`;
+export const StaffContent = styled.div`
+  display: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  &:hover {
+    display: inline-block;
+  }
 `;
 
 // export const Star = styled.div`
@@ -121,7 +153,3 @@ export const ArrowBtn = styled.div`
   /* left: 50%; */
   /* transform: translateX(50%); */
 `;
-
-// export const CommentWrapper = styled.div`
-//   height: 100vh;
-// `;

@@ -10,21 +10,34 @@ import {
 import {
   Container,
   DetailWrapper,
-  CommentWrapper,
   ArrowBtn,
   Header,
   HeaderKor,
   HeaderEng,
+  Wrapper,
   ContentWrapper,
   Poster,
   ContentItem,
   ContentTitle,
   Content,
   Summary,
+  Staff,
+  StaffItem,
+  StaffImg,
+  StaffContent,
 } from './styled';
 import Comment from '../comment';
 import GenreBox from '../../shared/Genre';
 import NotFoundPage from './../../shared/404/index';
+
+const ContentDiv = ({ title, content }) => {
+  return (
+    <ContentItem>
+      <ContentTitle>{title}</ContentTitle>
+      <Content>{content}</Content>
+    </ContentItem>
+  );
+};
 
 const Detail = ({ data }) => {
   const [direction, setDirection] = useState(true);
@@ -52,33 +65,46 @@ const Detail = ({ data }) => {
 
   return data ? (
     <Container ref={detailRef}>
-      <Header>
-        <HeaderKor>{data.title_kor}</HeaderKor>
-        <HeaderEng>{data.title_eng}</HeaderEng>
-      </Header>
       <DetailWrapper>
-        <Poster src={data.poster_url} />
-        <ContentWrapper>
-          <GenreBox genre={data.split_genre} />
-          <ContentItem>
-            <ContentTitle>상영시간</ContentTitle>
-            <Content>{data.showtimes}</Content>
-          </ContentItem>
-          <ContentItem>
-            <ContentTitle>상영등급</ContentTitle>
-            <Content>{data.rate}</Content>
-          </ContentItem>
-          <ContentItem>
-            <ContentTitle>개봉일</ContentTitle>
-            <Content>{data.release_date}</Content>
-          </ContentItem>
-          <ContentItem>
-            <ContentTitle>줄거리</ContentTitle>
-            <Summary>{data.summary}</Summary>
-          </ContentItem>
-        </ContentWrapper>
+        <Header>
+          <HeaderKor>{data.title_kor}</HeaderKor>
+          <HeaderEng>{data.title_eng}</HeaderEng>
+        </Header>
+        <Wrapper>
+          <Poster src={data.poster_url} />
+          <ContentWrapper>
+            <GenreBox genre={data.split_genre} />
+            <ContentDiv title={'상영시간'} content={data.showtimes} />
+            <ContentDiv title={'상영등급'} content={data.rate} />
+            <ContentDiv title={'개봉일'} content={data.release_date} />
+            <ContentItem>
+              <ContentTitle>줄거리</ContentTitle>
+              <Summary>{data.summary}</Summary>
+            </ContentItem>
+            <ContentItem>
+              <ContentTitle>인물정보</ContentTitle>
+              <Staff>
+                {/* {data.staff &&
+                data.staff.map((el, index) => {
+                  <StaffItem key={index}>
+                    <StaffImg src={el.image_url} />
+                    <StaffContent>
+                      {el.role} - {el.name}
+                    </StaffContent>
+                  </StaffItem>;
+                })} */}
+                <StaffItem>
+                  <StaffImg src={data.staff[0].image_url} />
+                  <StaffContent>
+                    {data.staff[0].role} - {data.staff[0].name}
+                  </StaffContent>
+                </StaffItem>
+              </Staff>
+            </ContentItem>
+          </ContentWrapper>
+        </Wrapper>
       </DetailWrapper>
-      <CommentWrapper></CommentWrapper>
+      {/* <Comment /> */}
       <ArrowBtn onClick={onClickArrow}>
         {direction ? (
           <FontAwesomeIcon icon={faAngleDown} />
