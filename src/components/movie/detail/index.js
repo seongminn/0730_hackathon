@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faStar,
@@ -20,16 +20,37 @@ import {
   ContentItem,
   ContentTitle,
   Content,
+  Summary,
 } from './styled';
 import Comment from '../comment';
 import GenreBox from '../../shared/Genre';
+import NotFoundPage from './../../shared/404/index';
 
 const Detail = ({ data }) => {
   const [direction, setDirection] = useState(true);
   const detailRef = useRef(null);
-  // const genre = data.genre.split(',');
 
-  return (
+  const onClickArrow = () => {
+    const targetHeight = detailRef.current.clientHeight;
+
+    direction
+      ? window.scrollTo({ top: targetHeight, behavior: 'smooth' })
+      : window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const onScroll = () => {
+    if (window.scrollY > window.innerHeight * 0.5) {
+      setDirection(false);
+    } else if (window.scrollY < window.innerHeight * 0.5) {
+      setDirection(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+  });
+
+  return data ? (
     <Container ref={detailRef}>
       <Header>
         <HeaderKor>{data.title_kor}</HeaderKor>
@@ -53,19 +74,21 @@ const Detail = ({ data }) => {
           </ContentItem>
           <ContentItem>
             <ContentTitle>줄거리</ContentTitle>
-            <Content>{data.summary}</Content>
+            <Summary>{data.summary}</Summary>
           </ContentItem>
         </ContentWrapper>
       </DetailWrapper>
       <CommentWrapper></CommentWrapper>
-      {/* <ArrowBtn onClick={onClickArrow}>
+      <ArrowBtn onClick={onClickArrow}>
         {direction ? (
           <FontAwesomeIcon icon={faAngleDown} />
         ) : (
           <FontAwesomeIcon icon={faAngleUp} />
         )}
-      </ArrowBtn> */}
+      </ArrowBtn>
     </Container>
+  ) : (
+    <NotFoundPage />
   );
 };
 
