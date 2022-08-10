@@ -1,16 +1,57 @@
 import styled from 'styled-components';
 import '../../../assets/fonts/fonts.css';
+import COLOR from './../../../constants/color';
 
 export const Container = styled.div`
   width: 100%;
   min-width: 512px;
+  margin: 0 auto;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
 `;
-export const ContentWrapper = styled.div`
+export const Header = styled.div`
+  width: 100%;
   display: flex;
 `;
+export const HeaderKor = styled.div`
+  font-family: 'BMHANNAPro', sans-serif;
+  font-size: 2rem;
+  margin-right: 10px;
+`;
+export const HeaderEng = styled.div`
+  color: ${COLOR['GRAY-200']}
+  font-size: 1.5rem;
+`;
+export const DetailWrapper = styled.div`
+  height: 100vh;
+  display: flex;
+`;
+export const Poster = styled.img`
+  display: block;
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  src: ${props => props.src};
+`;
+export const ContentWrapper = styled.div`
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+`;
+export const ContentItem = styled.div`
+  flex: 1;
+  display: flex;
+`;
+export const ContentTitle = styled.div`
+  flex: 0.3;
+  color: ${COLOR['GRAY-200']};
+`;
+export const Content = styled.div`
+  flex: 0.7;
+`;
 export const CommentWrapper = styled.div`
+  height: 100vh;
   display: flex;
 `;
 // export const Wrapper = styled.div``;
