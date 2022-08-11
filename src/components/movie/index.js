@@ -23,20 +23,20 @@ function DetailPage() {
   //   getDetailData();
   // }, []);
 
-  useEffect(() => {
-    async function getDetailData() {
-      try {
-        const new_data = { ...rawdata, split_genre: rawdata.genre.split(',') };
-        setData(new_data);
-        // console.log(data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    getDetailData();
-  }, []);
+  // useEffect(() => {
+  //   async function getDetailData() {
+  //     try {
+  //       const new_data = { ...rawdata, split_genre: rawdata.genre.split(',') };
+  //       setData(new_data);
+  //       // console.log(data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   getDetailData();
+  // }, []);
 
-  return <Detail data={data} />;
+  return <Detail data={rawdata} />;
 }
 
 export default DetailPage;

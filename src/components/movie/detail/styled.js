@@ -14,7 +14,7 @@ export const Container = styled.div`
   }
 `;
 export const DetailWrapper = styled.div`
-  height: 100vh;
+  height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +36,7 @@ export const HeaderEng = styled.div`
   align-items: flex-end;
 `;
 export const Wrapper = styled.div`
+  width: 100%;
   display: flex;
 `;
 export const Poster = styled.img`
@@ -67,38 +68,42 @@ export const Content = styled.div`
 export const Summary = styled.div`
   width: 100%;
   height: 150px;
+  line-height: 1.3;
   overflow-y: auto;
 `;
 export const Staff = styled.div`
   width: 100%;
   height: 150px;
   overflow-x: auto;
-  background: ${COLOR.YELLOW};
   display: flex;
-`;
-export const StaffItem = styled.div`
-  width: 100px;
-  height: 100%;
-`;
-export const StaffImg = styled.img`
-  width: 100%;
-  height: 100%;
-  src: ${props => props.src};
-  object-fit: cover;
-  position: relative;
 `;
 export const StaffContent = styled.div`
   display: none;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  &:hover {
-    display: inline-block;
+  opacity: 0;
+`;
+export const StaffItem = styled.div`
+  width: 100px;
+  height: 100%;
+  margin-right: 10px;
+  &:hover ${StaffContent} {
+    opacity: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0px;
+    left: 0px;
   }
+`;
+export const StaffImg = styled.div`
+  width: 100%;
+  height: 100%;
+  background-image: url(${props => props.src});
+  background-size: cover;
+  position: relative;
 `;
 
 // export const Star = styled.div`

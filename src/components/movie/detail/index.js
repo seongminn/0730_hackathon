@@ -84,27 +84,24 @@ const Detail = ({ data }) => {
             <ContentItem>
               <ContentTitle>인물정보</ContentTitle>
               <Staff>
-                {/* {data.staff &&
-                data.staff.map((el, index) => {
-                  <StaffItem key={index}>
-                    <StaffImg src={el.image_url} />
-                    <StaffContent>
-                      {el.role} - {el.name}
-                    </StaffContent>
-                  </StaffItem>;
-                })} */}
-                <StaffItem>
-                  <StaffImg src={data.staff[0].image_url} />
-                  <StaffContent>
-                    {data.staff[0].role} - {data.staff[0].name}
-                  </StaffContent>
-                </StaffItem>
+                {data.staff &&
+                  data.staff.map((el, index) => (
+                    <StaffItem key={index}>
+                      <StaffImg src={el.image_url}>
+                        <StaffContent>
+                          {el.role}
+                          <br />-<br />
+                          {el.name}
+                        </StaffContent>
+                      </StaffImg>
+                    </StaffItem>
+                  ))}
               </Staff>
             </ContentItem>
           </ContentWrapper>
         </Wrapper>
       </DetailWrapper>
-      {/* <Comment /> */}
+      <Comment />
       <ArrowBtn onClick={onClickArrow}>
         {direction ? (
           <FontAwesomeIcon icon={faAngleDown} />
