@@ -6,8 +6,10 @@ import React, { useState } from 'react';
 
 import {
   CommentListWrapper,
+  Input,
   InputWrapper,
   RatingWrapper,
+  SubBtn,
   Wrapper,
 } from './styled';
 
@@ -64,8 +66,11 @@ function Comment({ data }) {
   return (
     <Wrapper>
       <RatingWrapper>평점박스</RatingWrapper>
-      <CommentListWrapper>한줄평 박스</CommentListWrapper>
-      <InputWrapper>입력 박스</InputWrapper>
+      <CommentListWrapper>북마크순 | 최신순</CommentListWrapper>
+      <InputWrapper>
+        <Input></Input>
+        <SubBtn>확인</SubBtn>
+      </InputWrapper>
     </Wrapper>
     // <CommentConDiv>
     //   <CommentBoxDiv>

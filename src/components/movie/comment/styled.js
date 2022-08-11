@@ -24,6 +24,30 @@ export const InputWrapper = styled.div`
   height: 200px;
   background: ${COLOR.MINT};
   color: ${COLOR.BLACK};
+  display: flex;
+`;
+export const Input = styled.input.attrs({
+  placeholder: '댓글을 작성하려면 로그인 해주세요',
+})`
+  width: 800px;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-family: 'BMHANNAAir', sans-serif;
+  border: none;
+  border-radius: 8px;
+  background: ${COLOR.WHITE};
+  margin-right: 20px;
+`;
+export const SubBtn = styled.button`
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  padding: 10px;
+  background: ${COLOR.RED};
+  border: none;
+  font-size: 1.3rem;
+  color: ${COLOR.WHITE};
+  font-weight: bold;
 `;
 // export const CommentConDiv = styled.div`
 //   width: 100%;
