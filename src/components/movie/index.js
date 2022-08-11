@@ -9,12 +9,14 @@ import rawdata from './rawdata';
 function DetailPage() {
   const [data, setData] = useState([]);
   const { id } = useParams();
+  const new_data = { ...rawdata, split_genre: rawdata.genre.split(',') };
 
   // useEffect(() => {
   //   async function getDetailData() {
   //     try {
   //       const data = await detailAPI.getDetail(id);
-  //       setData(data);
+  //       const new_data = { ...rawdata, split_genre: rawdata.genre.split(',') };
+  //       setData(new_data);
   //       console.log(data);
   //     } catch (err) {
   //       console.log(err);
@@ -23,20 +25,7 @@ function DetailPage() {
   //   getDetailData();
   // }, []);
 
-  // useEffect(() => {
-  //   async function getDetailData() {
-  //     try {
-  //       const new_data = { ...rawdata, split_genre: rawdata.genre.split(',') };
-  //       setData(new_data);
-  //       // console.log(data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   getDetailData();
-  // }, []);
-
-  return <Detail data={rawdata} />;
+  return <Detail data={new_data} />;
 }
 
 export default DetailPage;
