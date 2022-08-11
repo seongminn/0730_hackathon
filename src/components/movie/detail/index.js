@@ -64,8 +64,8 @@ const Detail = ({ data }) => {
   });
 
   return data ? (
-    <Container ref={detailRef}>
-      <DetailWrapper>
+    <Container>
+      <DetailWrapper ref={detailRef}>
         <Header>
           <HeaderKor>{data.title_kor}</HeaderKor>
           <HeaderEng>{data.title_eng}</HeaderEng>
